@@ -1,0 +1,42 @@
+body {
+	margin: 0;
+	font-family: AvertaStd, -apple-system, BlinkMacSystemFont, Calibri, Trebuchet MS, sans-serif, Segoe UI, Roboto, Oxygen, Ubuntu, Fira Sans, Droid Sans, Helvetica Neue;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	/* background-color: rgb(32, 30, 30); */
+	/* background-color: #242526;
+	color: white; */
+}
+
+#pageNotFound {
+	color: white;
+	font-size: 30px;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.background {
+	display: inline-block;
+	background-color: #242526;
+	width: 100%;
+	min-height: 100vh !important;
+}
+
+#loadingScreen {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 50px;
+	color: white;
+	text-align: center;
+	background-color: #242526;
+	overflow: hidden;
+	width: 100%;
+}
+
+#loadingScreen div {
+	margin-bottom: 10px;
+}
