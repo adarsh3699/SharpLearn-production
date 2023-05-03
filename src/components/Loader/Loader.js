@@ -1,24 +1,28 @@
 import React from 'react';
 import './loader.css';
 
-function Loader() {
+function Loader({ isLoading }) {
 	return (
-		<div id="loadingIcon">
-			<div className="lds-spinner">
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-				<div></div>
-			</div>
-		</div>
+		<>
+			{isLoading ? (
+				<div id="loadingIcon">
+					<div className="lds-spinner">
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+						<div></div>
+					</div>
+				</div>
+			) : null}
+		</>
 	);
 }
 

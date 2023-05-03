@@ -23,9 +23,9 @@ const colRef = collection(database, 'CS-Courses');
 
 // const userId = JSON.parse(localStorage.getItem('user_details'))?.userId || '';
 
-function getUserAllNoteData(setAllCourses, setIsApiLoading, setMsg) {
-	const getDataQuery = query(colRef); // orderBy('name', 'desc || ase')
-	// setIsApiLoading(true);
+function getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgShown) {
+	const getDataQuery = query(colRef, orderBy('updatedOn', 'desc')); // orderBy('name', 'desc || ase')
+	setIsGetCourseApiLoading(true);
 	onSnapshot(
 		colRef,
 		async (realSnapshot) => {
@@ -34,32 +34,30 @@ function getUserAllNoteData(setAllCourses, setIsApiLoading, setMsg) {
 					let allCourses = [];
 					snapshot.docs.forEach((doc) => {
 						allCourses.push({
-							coursesId: doc.id,
+							courseId: doc.id,
 							courseThumbnail: doc.data()?.courseThumbnail,
 							courseName: doc.data()?.courseName,
 							aboutCourse: doc.data()?.aboutCourse,
 							coursePrice: doc.data()?.coursePrice,
+							courseType: doc.data()?.courseType,
 							demoVideo: doc.data()?.demoVideo,
-							updatedOn: doc.data().updatedOn,
+							courseLink: doc.data()?.courseLink,
+							updatedOn: doc.data()?.updatedOn,
 						});
 					});
-					// setIsApiLoading(false);
-					// setAllNotes(noteData);
-					console.log(allCourses);
+					setIsGetCourseApiLoading(false);
 					setAllCourses(allCourses);
-					// const encryptNotesData = encryptText(JSON.stringify(noteData));
-					// localStorage.setItem('note_data', encryptNotesData);
 				})
 				.catch((err) => {
-					// setIsApiLoading(false);
+					setIsGetCourseApiLoading(false);
 					console.log(err.message);
-					// setMsg(err.code);
+					handleMsgShown(err.code, 'error');
 				});
 		},
 		(err) => {
-			// setIsApiLoading(false);
+			setIsGetCourseApiLoading(false);
 			console.log(err);
-			// setMsg(err.code);
+			handleMsgShown(err.code, 'error');
 		}
 	);
 }

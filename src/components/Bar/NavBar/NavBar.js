@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -44,7 +45,7 @@ function NavBar(props) {
 			name: 'Home',
 			isSelected: true,
 			icon: <HomeIcon />,
-			// page: <ProfileSettings />,
+			page: '/',
 		},
 		{
 			name: 'Courses',
@@ -62,32 +63,32 @@ function NavBar(props) {
 			name: 'Cart',
 			isSelected: false,
 			icon: <ShoppingCartOutlinedIcon />,
-			page: undefined,
+			page: '/cart',
 		},
 	]);
 
 
 	const drawer = (
 		<Box sx={{ textAlign: 'center' }}>
-			<Typography variant="h6" className="brandName" sx={{ my: 1.3, justifyContent: 'center' }}>
-				SharpLearn
-			</Typography>
+			<div className='underMenuBrandName'>
+				<img src={logoSizeM} height='40px' alt="logo" /> SharpLearn
+			</div>
 			<Divider />
-			<List>
+			<List className='phoneMenuList'>
 				{settingsDrawerMenu.map((item, index) => (
-					<ListItem onClick={handleDrawerToggle} key={index} selected={item.isSelected} disablePadding>
-						<ListItemButton sx={{ py: 1.7, pl: 4 }}>
+					<NavLink to={item?.page} key={index} >
+						<ListItemButton selected={item.isSelected} sx={{ py: 1.7, pl: 4 }}>
 							<ListItemIcon>{item.icon}</ListItemIcon>
 							<ListItemText primary={item.name} />
 						</ListItemButton>
-					</ListItem>
+					</NavLink>
 				))}
 			</List>
-		</Box>
+		</Box >
 	);
 
 	return (
-		<Box sx={{ display: 'flex' }}>
+		<Box className='navBar' sx={{ display: 'flex' }}>
 			<CssBaseline />
 			<AppBar component="nav">
 				<Toolbar>
@@ -100,33 +101,44 @@ function NavBar(props) {
 					>
 						<MenuIcon />
 					</IconButton>
+
 					<div className="brandName">
-						<img src={logoSizeM} alt="logo" /> SharpLearn
+						<img src={logoSizeM} alt="logo" /> <span> SharpLearn</span>
 					</div>
+
+					<NavLink to='/cart' className='phoneCartBtn'   >
+						<Button sx={{ color: '#fff', display: { xs: 'flex', sm: 'none' } }}>
+							<AddShoppingCartIcon color="primary" fontSize='medium' /> Cart
+						</Button>
+					</NavLink>
+
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 						{settingsDrawerMenu.map((item, index) => (
-							<Button
-								key={index}
-								sx={item.name === 'Cart' ? { ml: 2, color: '#fff' } : { color: '#fff' }}
-							>
-								{item.name === 'Cart' ? (
-									<>
-										{' '}
-										<AddShoppingCartIcon color="primary" fontSize="large" />
-										Cart{' '}
-									</>
-								) : (
-									item.name
-								)}
-							</Button>
+							<NavLink to={item?.page} key={index} >
+								<Button
+									sx={item.name === 'Cart' ? { ml: 2, color: '#fff' } : { color: '#fff' }}
+								>
+									{item.name === 'Cart' ? (
+										<>
+											{' '}
+											<AddShoppingCartIcon color="primary" fontSize="large" />
+											Cart{' '}
+										</>
+									) : (
+										item.name
+									)}
+								</Button>
+							</NavLink>
 						))}
 					</Box>
 				</Toolbar>
 			</AppBar>
+
 			{/* Phone Menu Drawer ↓ */}
-			<Box component="nav">
+			<Box component="nav" >
 				<Drawer
 					container={container}
+					className='phoneMenuDrawer'
 					variant="temporary"
 					open={mobileOpen}
 					onClose={handleDrawerToggle}

@@ -4,7 +4,7 @@ import { Routes as Switch, Route } from 'react-router-dom';
 import Loader from './components/Loader/Loader';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
-// const LoginPage = lazy(() => import('./pages/LoginPage'));
+const CartPage = lazy(() => import('./pages/CartPage'));
 // const ForgetPasswordPage = lazy(() => import('./pages/ForgetPasswordPage'));
 // const CreateAcc = lazy(() => import('./pages/CreateAcc'));
 // const SettingsPage = lazy(() => import('./pages/SettingsPage'));
@@ -23,10 +23,10 @@ function Routes() {
 		>
 			<Switch>
 				<Route exact path="/" element={<HomePage />} />
-				{/* <Route exact path="/" element={<LoginPage />} />
-				<Route exact path="/register" element={<CreateAcc />} />
-				<Route exact path="/forget-password" element={<ForgetPasswordPage />} />
-				<Route exact path="/settings" element={<SettingsPage />} /> */}
+				<Route exact path="/cart" element={<CartPage />} />
+				{/* <Route exact path="/register" element={<CreateAcc />} /> */}
+				{/* <Route exact path="/forget-password" element={<ForgetPasswordPage />} /> */}
+				{/* <Route exact path="/settings" element={<SettingsPage />} /> */}
 
 				<Route
 					path="*"
