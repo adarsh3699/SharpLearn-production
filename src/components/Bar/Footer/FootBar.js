@@ -28,7 +28,7 @@ function FootBar() {
                     <div className='footerLogoContainer'>
                         <img className='footerLogo' src={logoImg} alt="" />
                         <div>© 2022-25 (V 1.0)</div>
-                        <div>Developed by<a href='https://www.bhemu.live/about' target='_blank' rel="noreferrer"> Adarsh Suman</a></div>
+                        <div>Developed by SharpLearn Team</div>
                     </div>
                 </div>
 
@@ -50,7 +50,7 @@ function FootBar() {
                 <div className='footerLogoContainer'>
                     <img className='footerLogo' src={logoImg} alt="" />
                     <div>© 2022-25 (V 1.0)</div>
-                    <div>Developed by<a href='https://www.bhemu.live/about' target='_blank' rel="noreferrer"> Adarsh Suman</a></div>
+                    <div>Developed by SharpLearn Team</div>
                 </div>
             </div>
         </div>

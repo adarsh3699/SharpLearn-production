@@ -24,7 +24,8 @@
 }
 
 .courseImg {
-	width: 450px;
+	min-width: 450px;
+	max-width: 450px;
 	object-fit: cover;
 	aspect-ratio: 1/1;
 	border-radius: 10px;
@@ -80,7 +81,8 @@
 
 @media screen and (max-width: 550px) {
 	.courseImg {
-		width: 90%;
+		min-width: 90%;
+		max-width: 90%;
 	}
 
 	.courseTitle {
