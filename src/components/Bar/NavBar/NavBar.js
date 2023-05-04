@@ -23,7 +23,6 @@ import MenuBookIcon from '@mui/icons-material/MenuBook';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
-
 import logoSizeM from '../../../images/logoSizeM.png';
 
 import './navBar.css';
@@ -67,16 +66,15 @@ function NavBar(props) {
 		},
 	]);
 
-
 	const drawer = (
 		<Box sx={{ textAlign: 'center' }}>
-			<div className='underMenuBrandName'>
-				<img src={logoSizeM} height='40px' alt="logo" /> SharpLearn
+			<div className="underMenuBrandName">
+				<img src={logoSizeM} height="40px" alt="logo" /> SharpLearn
 			</div>
 			<Divider />
-			<List className='phoneMenuList'>
+			<List className="phoneMenuList">
 				{settingsDrawerMenu.map((item, index) => (
-					<NavLink to={item?.page} key={index} >
+					<NavLink to={item?.page} key={index}>
 						<ListItemButton selected={item.isSelected} sx={{ py: 1.7, pl: 4 }}>
 							<ListItemIcon>{item.icon}</ListItemIcon>
 							<ListItemText primary={item.name} />
@@ -84,11 +82,11 @@ function NavBar(props) {
 					</NavLink>
 				))}
 			</List>
-		</Box >
+		</Box>
 	);
 
 	return (
-		<Box className='navBar' sx={{ display: 'flex' }}>
+		<Box className="navBar" sx={{ display: 'flex' }}>
 			{/* <CssBaseline /> */}
 			<AppBar component="nav">
 				<Toolbar>
@@ -106,18 +104,16 @@ function NavBar(props) {
 						<img src={logoSizeM} alt="logo" /> <span> SharpLearn</span>
 					</div>
 
-					<NavLink to='/cart' className='phoneCartBtn'   >
+					<NavLink to="/cart" className="phoneCartBtn">
 						<Button sx={{ color: '#fff', display: { xs: 'flex', sm: 'none' } }}>
-							<AddShoppingCartIcon color="primary" fontSize='medium' /> Cart
+							<AddShoppingCartIcon color="primary" fontSize="medium" /> Cart
 						</Button>
 					</NavLink>
 
 					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
 						{settingsDrawerMenu.map((item, index) => (
-							<NavLink to={item?.page} key={index} >
-								<Button
-									sx={item.name === 'Cart' ? { ml: 2, color: '#fff' } : { color: '#fff' }}
-								>
+							<NavLink to={item?.page} key={index}>
+								<Button sx={item.name === 'Cart' ? { ml: 2, color: '#fff' } : { color: '#fff' }}>
 									{item.name === 'Cart' ? (
 										<>
 											{' '}
@@ -135,10 +131,10 @@ function NavBar(props) {
 			</AppBar>
 
 			{/* Phone Menu Drawer ↓ */}
-			<Box component="nav" >
+			<Box component="nav">
 				<Drawer
 					container={container}
-					className='phoneMenuDrawer'
+					className="phoneMenuDrawer"
 					variant="temporary"
 					open={mobileOpen}
 					onClose={handleDrawerToggle}
@@ -156,7 +152,7 @@ function NavBar(props) {
 					{drawer}
 				</Drawer>
 			</Box>
-		</Box >
+		</Box>
 	);
 }
 

@@ -1,113 +1,112 @@
 #bottomBar {
-    background-color: rgb(29, 27, 27);
-    color: white;
-    width: 100%;
-    min-height: 150px;
-    padding: 20px 0;
+	background-color: rgb(29, 27, 27);
+	color: white;
+	width: 100%;
+	min-height: 150px;
+	padding: 20px 0;
 }
 
 .pcFooter {
-    display: flex;
-    justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 #bottomBar a {
-    color: white;
-    text-decoration: none;
+	color: white;
+	text-decoration: none;
 }
 
 #bottomBar a:hover {
-    text-decoration: underline;
+	text-decoration: underline;
 }
 
 .footerLeftSection {
-    /* background-color: red; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 33.5%;
-    letter-spacing: 1px;
+	/* background-color: red; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 33.5%;
+	letter-spacing: 1px;
 }
 
 .footerCoursesTitle {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 .footerLeftSection a {
-    padding: 2.5px 0;
+	padding: 2.5px 0;
 }
 
 .footerMiddleSection {
-    /* background-color: green; */
-    text-align: center;
-    width: 33%;
-    font-size: 13px;
+	/* background-color: green; */
+	text-align: center;
+	width: 33%;
+	font-size: 13px;
 }
 
 .footerBottomSectionPh {
-    display: none;
+	display: none;
 }
 
 .footerPageNavigation {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .footerPageNavigation a {
-    font-size: 20px;
-    padding: 5px 10px;
+	font-size: 20px;
+	padding: 5px 10px;
 }
 
 .footerLogo {
-    height: 70px;
-    margin-top: 10px;
+	height: 70px;
+	margin-top: 10px;
 }
 
 .footerRightSection {
-    /* background-color: blue; */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 33.5%;
+	/* background-color: blue; */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 33.5%;
 }
 
 .footerSocialTitle {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 5px;
 }
 
 .footerRightSection a {
-    padding: 2.5px 0;
+	padding: 2.5px 0;
 }
 
-
 @media screen and (max-width: 1000px) {
-    .pcFooter {
-        justify-content: space-around;
-    }
+	.pcFooter {
+		justify-content: space-around;
+	}
 
-    .footerMiddleSection {
-        display: none;
-    }
+	.footerMiddleSection {
+		display: none;
+	}
 
-    .footerBottomSectionPh {
-        display: block;
-        border-top: solid hsla(0, 0%, 100%, .3);
-        margin-top: 20px;
-        padding-top: 20px;
-        text-align: center;
-    }
+	.footerBottomSectionPh {
+		display: block;
+		border-top: solid hsla(0, 0%, 100%, 0.3);
+		margin-top: 20px;
+		padding-top: 20px;
+		text-align: center;
+	}
 
-    .footerPageNavigation a {
-        font-size: 17px;
-        font-weight: 500;
-    }
+	.footerPageNavigation a {
+		font-size: 17px;
+		font-weight: 500;
+	}
 
-    .footerLogoContainer {
-        font-size: 13px;
-    }
+	.footerLogoContainer {
+		font-size: 13px;
+	}
 }

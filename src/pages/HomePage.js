@@ -33,15 +33,20 @@ function HomePage() {
 		getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
 	}, [handleMsgShown]);
 	return (
-		<div className='homePage'>
+		<div className="homePage">
 			<NavBar />
-			<div className='homePageContainer' component="main">
+			<div className="homePageContainer" component="main">
 				<Toolbar />
 				<Loader isLoading={isGetCourseApiLoading} />
 				{allCourses.map((item, index) => {
 					return (
 						<div className="courseBox" key={index}>
-							<img className="courseImg" src={item?.courseThumbnail || photoNotAvailable} loading="lazy" alt="" />
+							<img
+								className="courseImg"
+								src={item?.courseThumbnail || photoNotAvailable}
+								loading="lazy"
+								alt=""
+							/>
 							<div className="courseDetails">
 								<div className="courseTitle">{item?.courseName}</div>
 								<div className="aboutCourse">{item?.aboutCourse}</div>

@@ -1,6 +1,7 @@
 body {
 	margin: 0;
-	font-family: AvertaStd, -apple-system, BlinkMacSystemFont, Calibri, Trebuchet MS, sans-serif, Segoe UI, Roboto, Oxygen, Ubuntu, Fira Sans, Droid Sans, Helvetica Neue;
+	font-family: AvertaStd, -apple-system, BlinkMacSystemFont, Calibri, Trebuchet MS, sans-serif, Segoe UI, Roboto,
+		Oxygen, Ubuntu, Fira Sans, Droid Sans, Helvetica Neue;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	/* background-color: rgb(32, 30, 30); */

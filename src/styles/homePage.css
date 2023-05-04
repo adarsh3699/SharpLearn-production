@@ -11,7 +11,7 @@
 .courseBox {
 	display: flex;
 	padding: 20px 0px;
-	border-bottom: 1px solid hsla(0, 0%, 100%, .3);
+	border-bottom: 1px solid hsla(0, 0%, 100%, 0.3);
 }
 
 .courseBox:last-of-type {
