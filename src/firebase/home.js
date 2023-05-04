@@ -24,7 +24,7 @@ const colRef = collection(database, 'All_Courses');
 
 // const userId = JSON.parse(localStorage.getItem('user_details'))?.userId || '';
 
-function getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgShown) {
+function getAllcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown) {
 	const getDataQuery = query(colRef, orderBy('updatedOn', 'desc')); // orderBy('name', 'desc || ase')  where('courseId', 'in', ['PvULuhJoNuCk7S8Ty1Oo', '9FhQjNp1LBrsw6ilGOuO'])
 	setIsGetCourseApiLoading(true);
 	onSnapshot(
@@ -49,7 +49,7 @@ function getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgSh
 					});
 					setIsGetCourseApiLoading(false);
 					setAllCourses(allCourses);
-					// console.log(allCourses);
+					console.log(allCourses);
 				})
 				.catch((err) => {
 					setIsGetCourseApiLoading(false);
@@ -133,4 +133,4 @@ function getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgSh
 //         });
 // }
 
-export { getUserAllNoteData };
+export { getAllcourses };

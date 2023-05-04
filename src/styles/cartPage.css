@@ -1,0 +1,100 @@
+.homePage {
+    min-height: 100vh;
+}
+
+.cartPageContainer {
+    display: flex;
+    justify-content: space-around;
+    min-height: 100vh;
+    padding: 10px 10px;
+    margin: 30px 0 200px 0;
+}
+
+.shoppingCartContainer {
+    width: 66%;
+    background-color: #2a2b2d;
+    border-radius: 5px;
+    box-shadow: 0 16px 32px 0 hsla(0, 0%, 7%, .2);
+    padding: 15px;
+}
+
+.shoppingCartTitle {
+    background-color: #242526;
+    border-radius: 5px;
+    color: #2894d1;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 7px 10px;
+    /* margin-bottom: 10px; */
+}
+
+.cartCourseBox {
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid hsla(0, 0%, 100%, 0.3);
+}
+
+.cartCourseBox:first-of-type {
+    padding: unset;
+}
+
+.cartCourseImg {
+    min-width: 200px;
+    max-width: 200px;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border-radius: 5px;
+}
+
+.cartCourseInfo {
+    padding: 0 15px;
+    width: 100%;
+}
+
+.cartCourseType {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cartCourseTitle {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.cartCoursePrice {
+    font-size: 40px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+
+/* ..........cartPriceSum............ */
+.cartPriceSum {
+    width: 23%;
+    height: fit-content;
+    background-color: #2a2b2d;
+    border-radius: 5px;
+    box-shadow: 0 16px 32px 0 hsla(0, 0%, 7%, .2);
+    padding: 15px 15px 30px 15px;
+}
+
+.cartPriceSumTitle {
+    background-color: #242526;
+    border-radius: 5px;
+    color: rgb(222, 75, 155);
+    /* rgb(136, 115, 255) */
+    font-size: 25px;
+    font-weight: 700;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+}
+
+.cartPriceDetails {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    font-size: 20px;
+    font-weight: 500;
+}

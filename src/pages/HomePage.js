@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { getUserAllNoteData } from '../firebase//home.js';
+import { handleCartAddition } from '../utils'
+
+import { getAllcourses } from '../firebase//home.js';
 import NavBar from '../components/Bar/NavBar/NavBar.js';
 import FootBar from '../components/Bar/Footer/FootBar.js';
-import EnrollBtn from '../components/EnrollBtn/EnrollBtn';
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg.js';
+import MuiBtn from '../components/MuiBtn/MuiBtn.js';
 
 import Toolbar from '@mui/material/Toolbar';
 
@@ -30,7 +32,7 @@ function HomePage() {
 	}, []);
 
 	useEffect(() => {
-		getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
+		getAllcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
 	}, [handleMsgShown]);
 	return (
 		<div className="homePage">
@@ -51,7 +53,17 @@ function HomePage() {
 								<div className="courseTitle">{item?.courseName}</div>
 								<div className="aboutCourse">{item?.aboutCourse}</div>
 								<div className="coursePrice">₹{item?.courseDiscountedPrice}</div>
-								<EnrollBtn />
+								<MuiBtn
+									BtnTitle="Buy Now"
+									color="success"
+									sx={{ py: 1, px: 4, fontSize: 18 }}
+								/>
+								<MuiBtn
+									BtnTitle="Add to Cart"
+									color="info"
+									sx={{ marginLeft: 3, py: 1, px: 4, fontSize: 18 }}
+									onBtnClick={() => handleCartAddition(item?.courseId)}
+								/>
 							</div>
 						</div>
 					);
