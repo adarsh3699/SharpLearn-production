@@ -89,7 +89,7 @@ function NavBar(props) {
 
 	return (
 		<Box className='navBar' sx={{ display: 'flex' }}>
-			<CssBaseline />
+			{/* <CssBaseline /> */}
 			<AppBar component="nav">
 				<Toolbar>
 					<IconButton

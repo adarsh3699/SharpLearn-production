@@ -45,7 +45,7 @@ function HomePage() {
 							<div className="courseDetails">
 								<div className="courseTitle">{item?.courseName}</div>
 								<div className="aboutCourse">{item?.aboutCourse}</div>
-								<div className="coursePrice">₹{item?.coursePrice}</div>
+								<div className="coursePrice">₹{item?.courseDiscountedPrice}</div>
 								<EnrollBtn />
 							</div>
 						</div>

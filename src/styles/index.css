@@ -4,8 +4,8 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	/* background-color: rgb(32, 30, 30); */
-	/* background-color: #242526;
-	color: white; */
+	background-color: #242526;
+	color: white;
 }
 
 #pageNotFound {

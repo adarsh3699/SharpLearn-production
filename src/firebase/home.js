@@ -12,6 +12,7 @@ import {
 	doc,
 	query,
 	where,
+	limit,
 	serverTimestamp,
 	orderBy,
 } from 'firebase/firestore';
@@ -19,12 +20,12 @@ import {
 const auth = getAuth();
 const database = getFirestore();
 // collection ref
-const colRef = collection(database, 'CS-Courses');
+const colRef = collection(database, 'All_Courses');
 
 // const userId = JSON.parse(localStorage.getItem('user_details'))?.userId || '';
 
 function getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgShown) {
-	const getDataQuery = query(colRef, orderBy('updatedOn', 'desc')); // orderBy('name', 'desc || ase')
+	const getDataQuery = query(colRef, orderBy('updatedOn', 'desc')); // orderBy('name', 'desc || ase')  where('courseId', 'in', ['PvULuhJoNuCk7S8Ty1Oo', '9FhQjNp1LBrsw6ilGOuO'])
 	setIsGetCourseApiLoading(true);
 	onSnapshot(
 		colRef,
@@ -38,7 +39,8 @@ function getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgSh
 							courseThumbnail: doc.data()?.courseThumbnail,
 							courseName: doc.data()?.courseName,
 							aboutCourse: doc.data()?.aboutCourse,
-							coursePrice: doc.data()?.coursePrice,
+							courseDiscountedPrice: doc.data()?.courseDiscountedPrice,
+							courseORGPrice: doc.data()?.courseORGPrice,
 							courseType: doc.data()?.courseType,
 							demoVideo: doc.data()?.demoVideo,
 							courseLink: doc.data()?.courseLink,
@@ -47,6 +49,7 @@ function getUserAllNoteData(setAllCourses, setIsGetCourseApiLoading, handleMsgSh
 					});
 					setIsGetCourseApiLoading(false);
 					setAllCourses(allCourses);
+					// console.log(allCourses);
 				})
 				.catch((err) => {
 					setIsGetCourseApiLoading(false);
