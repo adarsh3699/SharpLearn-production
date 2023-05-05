@@ -35,16 +35,22 @@ function HomePage() {
 		getAllCartItems(setAllCartCourses, setIsGetCourseApiLoading, handleMsgShown);
 	}, [handleMsgShown]);
 
-	// useEffect(() => {
+	useEffect(() => {
+		let cartPriceSum = { courseORGPrice: 0, courseDiscountedPrice: 0 };
+		for (var i = 0; i < allCartCourses.length; i++) {
+			cartPriceSum.courseORGPrice = cartPriceSum.courseORGPrice + parseInt(allCartCourses[i].courseORGPrice);
+			cartPriceSum.courseDiscountedPrice = cartPriceSum.courseDiscountedPrice + parseInt(allCartCourses[i].courseDiscountedPrice);
+		}
+		// setcoursePrices(cartPriceSum);
+		console.log(cartPriceSum);
+		// const coursePrice = allCartCourses.map((item) => {
+		// console.log(parseInt(item.courseDiscountedPrice) + parseInt(item.courseDiscountedPrice));
+		// return (ka = ka + parseInt(item.courseDiscountedPrice))
+		// return (setcoursePrices({ courseDiscountedPrice: (parseInt(item.courseDiscountedPrice) + coursePrices.courseDiscountedPrice), courseORGPrice: (parseInt(item.courseORGPrice) + coursePrices.courseORGPrice) }))
+		// })
+		// console.log(coursePrice);
 
-	// 	const coursePrice = allCartCourses.map((item) => {
-	// 		// console.log(parseInt(item.courseDiscountedPrice) + parseInt(item.courseDiscountedPrice));
-	// 		// return (ka = ka + parseInt(item.courseDiscountedPrice))
-	// 		return (setcoursePrices({ courseDiscountedPrice: (parseInt(item.courseDiscountedPrice) + coursePrices.courseDiscountedPrice), courseORGPrice: (parseInt(item.courseORGPrice) + coursePrices.courseORGPrice) }))
-	// 	})
-	// 	console.log(coursePrice);
-
-	// }, [allCartCourses, coursePrices]);
+	}, [allCartCourses, coursePrices]);
 
 	const handleRemoveBtnClick = useCallback((courseId) => {
 		const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
@@ -87,11 +93,11 @@ function HomePage() {
 					<div className='cartPriceSumTitle'>Price Details</div>
 					<div className='cartPriceDetails'>
 						<div className='cartPriceDetailsName'>Price</div>
-						<div className='cartPriceDetailsValue'>₹0</div>
+						<div className='cartPriceDetailsValue'>₹{coursePrices?.courseORGPrice}</div>
 					</div>
 					<div className='cartPriceDetails'>
 						<div className='cartPriceDetailsName'>Discount</div>
-						<div className='cartPriceDetailsValue'>- ₹0</div>
+						<div className='cartPriceDetailsValue'>- ₹{coursePrices?.courseDiscountedPrice}</div>
 					</div>
 					<hr />
 					<div className='cartPriceDetails'>

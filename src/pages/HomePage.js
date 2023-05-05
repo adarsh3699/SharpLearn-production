@@ -56,12 +56,12 @@ function HomePage() {
 								<MuiBtn
 									BtnTitle="Buy Now"
 									color="success"
-									sx={{ py: 1, px: 4, fontSize: 18 }}
+									sx={{ py: { xs: 0.5, sm: 1 }, px: { sx: 2, sm: 4 }, fontSize: { xs: 15, sm: 18 } }}
 								/>
 								<MuiBtn
 									BtnTitle="Add to Cart"
 									color="info"
-									sx={{ marginLeft: 3, py: 1, px: 4, fontSize: 18 }}
+									sx={{ marginLeft: 3, py: { xs: 0.5, sm: 1 }, px: { sx: 2, sm: 4 }, fontSize: { xs: 15, sm: 18 } }}
 									onBtnClick={() => handleCartAddition(item?.courseId)}
 								/>
 							</div>
