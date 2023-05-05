@@ -113,9 +113,9 @@ function NavBar(props) {
 						<MenuIcon />
 					</IconButton>
 
-					<NavLink to='/' className="brandName">
-						<img src={logoSizeM} alt="logo" /> <span> SharpLearn</span>
-					</NavLink>
+					<div className="brandName">
+						<img src={logoSizeM} alt="logo" /> <NavLink to='/'> SharpLearn</NavLink>
+					</div>
 
 					<NavLink to="/cart" className="phoneCartBtn">
 						<Button sx={{ color: '#fff', display: { xs: 'flex', sm: 'none' } }}>
