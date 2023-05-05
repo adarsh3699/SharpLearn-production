@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
@@ -35,9 +32,9 @@ function NavBar(props) {
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 
-	const handleDrawerToggle = () => {
+	const handleDrawerToggle = useCallback(() => {
 		setMobileOpen((prevState) => !prevState);
-	};
+	}, []);
 
 	const [settingsDrawerMenu, setSettingsDrawerMenu] = useState([
 		{
@@ -66,6 +63,18 @@ function NavBar(props) {
 		},
 	]);
 
+	const handleSelectedMenu = useCallback(
+		(index) => {
+			handleDrawerToggle();
+			const newSettingsDrawerMenu = settingsDrawerMenu.map(function (items, i) {
+				return i === index ? { ...items, isSelected: true } : { ...items, isSelected: false };
+			});
+
+			setSettingsDrawerMenu(newSettingsDrawerMenu);
+		},
+		[settingsDrawerMenu, handleDrawerToggle]
+	);
+
 	const drawer = (
 		<Box sx={{ textAlign: 'center' }}>
 			<div className="underMenuBrandName">
@@ -75,7 +84,11 @@ function NavBar(props) {
 			<List className="phoneMenuList">
 				{settingsDrawerMenu.map((item, index) => (
 					<NavLink to={item?.page} key={index}>
-						<ListItemButton selected={item.isSelected} sx={{ py: 1.7, pl: 4 }}>
+						<ListItemButton
+							selected={item.isSelected}
+							onClick={() => handleSelectedMenu(index)}
+							sx={{ py: 1.7, pl: 4 }}
+						>
 							<ListItemIcon>{item.icon}</ListItemIcon>
 							<ListItemText primary={item.name} />
 						</ListItemButton>
@@ -100,9 +113,9 @@ function NavBar(props) {
 						<MenuIcon />
 					</IconButton>
 
-					<div className="brandName">
+					<NavLink to='/' className="brandName">
 						<img src={logoSizeM} alt="logo" /> <span> SharpLearn</span>
-					</div>
+					</NavLink>
 
 					<NavLink to="/cart" className="phoneCartBtn">
 						<Button sx={{ color: '#fff', display: { xs: 'flex', sm: 'none' } }}>

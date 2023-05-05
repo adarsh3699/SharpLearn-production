@@ -1,24 +1,24 @@
 import React, { useEffect, useCallback, useState } from 'react';
 
-import { getAllCartItems } from '../firebase/cartPage'
+import { getAllCartItems } from '../firebase/cartPage';
 
-import NavBar from '../components/Bar/NavBar/NavBar.js';
-import FootBar from '../components/Bar/Footer/FootBar.js';
 import Loader from '../components/Loader/Loader.js';
-import MuiBtn from '../components/MuiBtn/MuiBtn.js';
+import ShowMsg from '../components/ShowMsg/ShowMsg';
 
 import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
+import VerifiedUserTwoToneIcon from '@mui/icons-material/VerifiedUserTwoTone';
 
 import photoNotAvailable from '../images/photoNotAvailable.jpeg';
+import cartIsEmpty from '../images/cart-is-empty.png';
 
 import '../styles/cartPage.css';
 
 function HomePage() {
 	const [msg, setMsg] = useState({ text: '', type: '' });
-	const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(false);
+	const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
 	const [allCartCourses, setAllCartCourses] = useState([]);
-	const [coursePrices, setcoursePrices] = useState({ courseORGPrice: 0, courseDiscountedPrice: 0 });
+	const [totalCoursePrices, setTotalCoursePrices] = useState({ courseORGPrice: 0, courseDiscountedPrice: 0 });
 
 	const handleMsgShown = useCallback((msgText, type) => {
 		if (msgText) {
@@ -39,32 +39,37 @@ function HomePage() {
 		let cartPriceSum = { courseORGPrice: 0, courseDiscountedPrice: 0 };
 		for (var i = 0; i < allCartCourses.length; i++) {
 			cartPriceSum.courseORGPrice = cartPriceSum.courseORGPrice + parseInt(allCartCourses[i].courseORGPrice);
-			cartPriceSum.courseDiscountedPrice = cartPriceSum.courseDiscountedPrice + parseInt(allCartCourses[i].courseDiscountedPrice);
+			cartPriceSum.courseDiscountedPrice =
+				cartPriceSum.courseDiscountedPrice + parseInt(allCartCourses[i].courseDiscountedPrice);
 		}
-		// setcoursePrices(cartPriceSum);
-		console.log(cartPriceSum);
-		// const coursePrice = allCartCourses.map((item) => {
-		// console.log(parseInt(item.courseDiscountedPrice) + parseInt(item.courseDiscountedPrice));
-		// return (ka = ka + parseInt(item.courseDiscountedPrice))
-		// return (setcoursePrices({ courseDiscountedPrice: (parseInt(item.courseDiscountedPrice) + coursePrices.courseDiscountedPrice), courseORGPrice: (parseInt(item.courseORGPrice) + coursePrices.courseORGPrice) }))
-		// })
-		// console.log(coursePrice);
-
-	}, [allCartCourses, coursePrices]);
+		setTotalCoursePrices(cartPriceSum);
+	}, [allCartCourses]);
 
 	const handleRemoveBtnClick = useCallback((courseId) => {
 		const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
-		var filteredArray = userCart.filter(function (e) { return e !== courseId })
+		var filteredArray = userCart.filter(function (e) {
+			return e !== courseId;
+		});
 		localStorage.setItem('user_cart', JSON.stringify(filteredArray));
-		window.location.reload()
+		window.location.reload();
 	}, []);
+
 	return (
 		<div className="cartPage">
-			<NavBar />
+			{/* <NavBar /> */}
 			<Toolbar />
 			<div className="cartPageContainer" component="main">
-				<div className='shoppingCartContainer'>
-					<div className='shoppingCartTitle'>Shopping Cart</div>
+				<div className="leftContainer">
+					<div className="shoppingCartTitle">Shopping Cart</div>
+
+					<Loader isLoading={isGetCourseApiLoading} />
+
+					{allCartCourses.length === 0 && !isGetCourseApiLoading && (
+						<div className="cartIsEmpty">
+							<img src={cartIsEmpty} alt="" />
+							<div>Your is cart currently empty.</div>
+						</div>
+					)}
 
 					{allCartCourses.map((item, index) => {
 						return (
@@ -76,37 +81,52 @@ function HomePage() {
 									alt=""
 								/>
 								<div className="cartCourseInfo">
-									<div className='cartCourseType'>Type:- {item?.courseType}</div>
+									<div className="cartCourseType">Type:- {item?.courseType}</div>
 									<div className="cartCourseTitle">{item?.courseName}</div>
 									<div className="cartCoursePrice">₹{item?.courseDiscountedPrice}</div>
-									<Button onClick={() => handleRemoveBtnClick(item?.courseId)}>
-										Remove
-									</Button>
-
+									<Button onClick={() => handleRemoveBtnClick(item?.courseId)}>Remove</Button>
 								</div>
 							</div>
 						);
 					})}
 				</div>
+				<div className="rightContainer">
+					<div className="cartPriceSum">
+						<div className="cartPriceSumTitle">Price Details</div>
+						<div className="cartPriceDetails">
+							<div className="cartPriceDetailsName">Price</div>
+							<div className="cartPriceDetailsValue">₹{totalCoursePrices?.courseORGPrice}</div>
+						</div>
+						<div className="cartPriceDetails">
+							<div className="cartPriceDetailsName">Discount</div>
+							<div className="cartPriceDetailsValue cartDiscountPriceValue">
+								- ₹{totalCoursePrices?.courseORGPrice - totalCoursePrices?.courseDiscountedPrice}
+							</div>
+						</div>
+						<hr className="totalPriceLine" />
+						<div className="cartPriceDetails cartTotalPrice">
+							<div className="cartPriceDetailsName">Total Amount</div>
+							<div className="cartPriceDetailsValue">₹{totalCoursePrices?.courseDiscountedPrice}</div>
+						</div>
+					</div>
+					<div className="VerifiedPaymet">
+						<VerifiedUserTwoToneIcon sx={{ mr: 1 }} />
+						<>Safe and Secure Payments. 100% Authentic products.</>
+					</div>
 
-				<div className='cartPriceSum'>
-					<div className='cartPriceSumTitle'>Price Details</div>
-					<div className='cartPriceDetails'>
-						<div className='cartPriceDetailsName'>Price</div>
-						<div className='cartPriceDetailsValue'>₹{coursePrices?.courseORGPrice}</div>
-					</div>
-					<div className='cartPriceDetails'>
-						<div className='cartPriceDetailsName'>Discount</div>
-						<div className='cartPriceDetailsValue'>- ₹{coursePrices?.courseDiscountedPrice}</div>
-					</div>
-					<hr />
-					<div className='cartPriceDetails'>
-						<div className='cartPriceDetailsName'>Total Amount</div>
-						<div className='cartPriceDetailsValue'>₹0</div>
-					</div>
+					<Button
+						variant="contained"
+						className="cartCheckoutBtn"
+						color="warning"
+						sx={{ my: 3, px: 3, py: 1.5 }}
+						fullWidth
+						onClick={() => handleMsgShown('This Feature is not available yet', 'warning')}
+					>
+						Place Order
+					</Button>
 				</div>
 			</div>
-			<FootBar />
+			{msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />}
 		</div>
 	);
 }

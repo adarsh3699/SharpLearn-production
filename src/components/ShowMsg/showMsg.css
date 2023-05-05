@@ -26,3 +26,8 @@
 .success {
 	background-color: green;
 }
+
+.warning {
+	background-color: orange;
+	color: black;
+}

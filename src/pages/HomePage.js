@@ -1,10 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { handleCartAddition } from '../utils'
-
 import { getAllcourses } from '../firebase//home.js';
-import NavBar from '../components/Bar/NavBar/NavBar.js';
-import FootBar from '../components/Bar/Footer/FootBar.js';
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg.js';
 import MuiBtn from '../components/MuiBtn/MuiBtn.js';
@@ -34,9 +30,23 @@ function HomePage() {
 	useEffect(() => {
 		getAllcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
 	}, [handleMsgShown]);
+
+	const handleAddToCartBtnClick = useCallback(
+		(courseId) => {
+			const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
+			if (!userCart.includes(courseId)) {
+				userCart.push(courseId);
+				localStorage.setItem('user_cart', JSON.stringify(userCart));
+				handleMsgShown('Course Added to Cart', 'success');
+			} else {
+				handleMsgShown('Course Already in Cart', 'warning');
+			}
+		},
+		[handleMsgShown]
+	);
+
 	return (
 		<div className="homePage">
-			<NavBar />
 			<div className="homePageContainer" component="main">
 				<Toolbar />
 				<Loader isLoading={isGetCourseApiLoading} />
@@ -61,16 +71,19 @@ function HomePage() {
 								<MuiBtn
 									BtnTitle="Add to Cart"
 									color="info"
-									sx={{ marginLeft: 3, py: { xs: 0.5, sm: 1 }, px: { sx: 2, sm: 4 }, fontSize: { xs: 15, sm: 18 } }}
-									onBtnClick={() => handleCartAddition(item?.courseId)}
+									sx={{
+										marginLeft: 3,
+										py: { xs: 0.5, sm: 1 },
+										px: { sx: 2, sm: 4 },
+										fontSize: { xs: 15, sm: 18 },
+									}}
+									onBtnClick={() => handleAddToCartBtnClick(item?.courseId)}
 								/>
 							</div>
 						</div>
 					);
 				})}
 			</div>
-			<FootBar />
-
 			{msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />}
 		</div>
 	);
