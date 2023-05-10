@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { getcourses } from '../firebase/homePage.js';
 import Loader from '../components/Loader/Loader.js';
@@ -10,6 +11,8 @@ import Button from '@mui/material/Button';
 import DoneIcon from '@mui/icons-material/Done';
 
 import photoNotAvailable from '../images/photoNotAvailable.jpeg';
+import arrow from '../images/arrow.svg';
+import viewImg from '../images/view.png';
 
 import '../styles/homePage.css';
 
@@ -18,8 +21,7 @@ const keyPoints = [
 	{ title: 'Unlimited', description: ' Lifetime access of course.' },
 	{ title: 'Language', description: 'Indian English and Hindi.' },
 	{ title: 'Support', description: '24/7 Student support line.' },
-
-]
+];
 
 function HomePage() {
 	const [msg, setMsg] = useState({ text: '', type: '' });
@@ -64,30 +66,70 @@ function HomePage() {
 			<div className="homePageSharpLearnIntro">
 				<div>
 					Become a certified Software Developer with 100% Practical Learning from Beginner to Advance.
-					Kickstart Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire You!
-					Even if you're a complete beginner with zero knowledge
+					Kickstart Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire
+					You! Even if you're a complete beginner with zero knowledge
 				</div>
 
-
-				{keyPoints.map((item, index) =>
-
-					<div className='homePageKeyPoint' key={index}>
+				{keyPoints.map((item, index) => (
+					<div className="homePageKeyPoint" key={index}>
 						<DoneIcon sx={{ mr: 1 }} />
-						<div> <b>{item?.title}:- </b> {item?.description}</div>
+						<div>
+							{' '}
+							<b>{item?.title}:- </b> {item?.description}
+						</div>
 					</div>
-				)}
+				))}
 			</div>
-			<div className='homePageCoursesTitle'>Courses🔗</div>
+			<div className="homePageCoursesTitle">
+				Trending Courses<div class="titleBorder"></div>
+			</div>
 			<div className="homePageTrendingCourses">
-				<img src={allCourses[0]?.courseThumbnail} className='TrendingCoursesImg' alt="" />
-				<div className='trendingDetailsBox'>
-					<div className='trendingCoursesTitle'>{allCourses[0]?.courseName}</div>
-					<div className='trendingCoursesAbout'>{allCourses[0]?.aboutCourse}</div>
-					<div className='trendingCoursesPriceSection'>
-						<div className='trendingCoursesPrice'>Now ₹{allCourses[0]?.courseDiscountedPrice},</div>
-						<div className='trendingCoursesOrgPrice'>₹{allCourses[0]?.courseORGPrice}</div>
+				<img src={allCourses[0]?.courseThumbnail} className="TrendingCoursesImg" alt="" />
+				<div className="trendingDetailsBox">
+					<div className="trendingCoursesTitle">{allCourses[0]?.courseName}</div>
+					<div className="trendingCoursesAbout">{allCourses[0]?.aboutCourse}</div>
+					<div className="trendingCoursesPriceSection">
+						<div className="trendingCoursesPrice">Now ₹{allCourses[0]?.courseDiscountedPrice},</div>
+						<div className="trendingCoursesOrgPrice">₹{allCourses[0]?.courseORGPrice}</div>
 					</div>
-					<Button variant='contained' sx={{ mt: 2 }}>Buy Now </Button>
+					<Button variant="contained" sx={{ mt: 2, mr: 2 }}>
+						Buy Now{' '}
+					</Button>
+					<NavLink to="/courses" className="navLink">
+						<Button variant="contained" sx={{ mt: 2 }}>
+							Our Other Courses.
+						</Button>
+					</NavLink>
+				</div>
+			</div>
+
+			<div className="homePageCoursesTitle">
+				Other Courses<div class="titleBorder"></div>
+			</div>
+			<div className="homePageOtherCourses">
+				{allCourses.map((item, index) => (
+					<div className="otherCourseItem" key={index}>
+						<img src={item?.courseThumbnail} className="otherCourseImg" alt="" />
+						<div className="aboutOtherCourse">
+							<div class="courseType">{item?.courseType}</div>
+							<div class="otherCourseTitle">{item?.courseName}</div>
+							<div class="moreInfo">
+								<div>More Info</div>
+								<img src={arrow} alt="" />
+							</div>
+						</div>
+					</div>
+				))}
+				<div className="otherCourseItem">
+					<div className='otherCourseImg videOtherCourses'>View All</div>
+					<div className="aboutOtherCourse">
+						<div class="courseType">Other</div>
+						<div class="otherCourseTitle">View other courses</div>
+						<div class="moreInfo">
+							<div>More Info</div>
+							<img src={arrow} alt="" />
+						</div>
+					</div>
 				</div>
 			</div>
 

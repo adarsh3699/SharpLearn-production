@@ -1,94 +1,196 @@
 .homePage {
-    min-height: 100vh;
-    padding: 0 15px;
+	min-height: 100vh;
+	padding: 0 15px;
 }
 
 .homePageTitle {
-    margin: 30px 0 20px 0;
-    text-align: center;
-    font-size: 60px;
-    letter-spacing: 3px;
-    font-weight: 500;
-    color: var(--color-6Z-gr45-3);
-    text-shadow: 2px 2px 4px #7f8287;
+	margin: 30px 0 20px 0;
+	text-align: center;
+	font-size: 60px;
+	letter-spacing: 3px;
+	font-weight: 500;
+	color: var(--color-6Z-gr45-3);
+	text-shadow: 2px 2px 4px #7f8287;
 }
 
 .homePageSharpLearnIntro {
-    padding: 20px;
-    width: calc(100% - 40px);
-    margin: auto;
-    border-radius: 5px;
-    /* background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgb(222, 182, 147) 100%); */
-    background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgba(73, 165, 191, 0.56) 50%, rgb(222, 192, 147) 100%)
+	padding: 20px;
+	width: calc(100% - 40px);
+	margin: auto;
+	border-radius: 5px;
+	/* background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgb(222, 182, 147) 100%); */
+	background: -webkit-linear-gradient(-45deg,
+			rgba(73, 165, 191, 0.32) 0%,
+			rgba(73, 165, 191, 0.56) 50%,
+			rgb(222, 192, 147) 100%);
 }
 
 .homePageKeyPoint {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
 }
 
 .homePageCoursesTitle {
-    margin: 20px 0;
-    font-size: 30px;
-    letter-spacing: 3px;
-    font-weight: 500;
-    color: var(--color-6Z-gr45-3);
-    text-shadow: 2px 2px 4px #7f8287;
+	margin: 30px 0 20px 0;
+	font-size: 30px;
+	letter-spacing: 3px;
+	font-weight: 500;
+	color: var(--color-6Z-gr45-3);
+	text-shadow: 2px 2px 4px #7f8287;
 }
 
 .homePageTrendingCourses {
-    display: flex;
-    margin: 20px 0;
+	display: flex;
+	margin: 20px 0;
 }
 
 .TrendingCoursesImg {
-    width: 40%;
+	width: 40%;
 }
 
 .trendingDetailsBox {
-    margin-left: 20px;
+	margin-left: 20px;
 }
 
 .trendingCoursesTitle {
-    width: 55;
-    font-size: 30px;
-    font-weight: bold;
-    margin-bottom: 10px;
+	width: 55;
+	font-size: 30px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.titleBorder {
+	background: #0259eb;
+	border-radius: 16px;
+	height: 3px;
+	left: 152px;
+	margin-top: 8px;
+	top: 1626px;
+	width: 48px;
 }
 
 .trendingCoursesAbout {
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 
 .trendingCoursesPriceSection {
-    display: flex;
+	display: flex;
 }
 
 .trendingCoursesPrice {
-    font-size: 30px;
-    font-weight: bold;
-    margin-right: 10px;
+	font-size: 30px;
+	font-weight: bold;
+	margin-right: 10px;
 }
 
 .trendingCoursesOrgPrice {
-    font-size: 30px;
-    font-weight: bold;
-    margin-right: 10px;
-    text-decoration: line-through;
-    text-decoration-color: red;
+	font-size: 30px;
+	font-weight: bold;
+	margin-right: 10px;
+	text-decoration: line-through;
+	text-decoration-color: red;
 }
 
+.homePageOtherCourses {
+	display: flex;
+	justify-content: space-between;
+	overflow-x: auto;
+	margin-bottom: 100px;
+}
 
+.otherCourseItem {
+	background: #111229;
+	border-radius: 8px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+	box-shadow: 8px -8px 0 1px #681a1a;
+	margin: 10px 16px 0;
+	min-width: 300px;
+	overflow: hidden;
+}
+
+.otherCourseImg {
+	width: 100%;
+	aspect-ratio: 1;
+	background-color: 2px 2px 4px #7f8287;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+}
+
+.otherCourseImg:hover {
+	transition-duration: .8s;
+	transform: scale(1.05);
+	background-color: #0258eb7e;
+}
+
+.videOtherCourses {
+	width: 100%;
+	aspect-ratio: 1;
+}
+
+.videOtherCourses:hover {
+	background-color: #0258eb7e;
+}
+
+.aboutOtherCourse {
+	padding: 15px;
+}
+
+.courseType {
+	background: #e5c558;
+	border-radius: 1px;
+	color: #682f26;
+	font-size: 15px;
+	margin-bottom: 10px;
+	padding: 1px 5px;
+	width: fit-content;
+}
+
+.otherCourseTitle {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 18px;
+}
+
+.moreInfo {
+	display: flex;
+	align-items: center;
+	color: #0259eb;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.moreInfo img {
+	margin-left: 10px;
+}
 
 /* ------------M-web----------- */
 @media screen and (max-width: 1000px) {
+	.homePageTitle {
+		font-size: 40px;
+	}
 
-    .homePageTitle {
-        font-size: 40px;
-    }
+	.homePageSharpLearnIntro {
+		padding: 10px;
+		width: calc(100% - 20px);
+	}
 
-    .homePageTrendingCourses {
-        display: block;
-    }
+	.homePageTrendingCourses {
+		display: block;
+		margin: unset;
+		text-align: center;
+	}
+
+	.TrendingCoursesImg {
+		width: 90%;
+		margin: auto;
+	}
+
+	.trendingDetailsBox {
+		width: 90%;
+		margin: 10px auto;
+		text-align: left;
+	}
 }

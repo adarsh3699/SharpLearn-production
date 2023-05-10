@@ -114,7 +114,7 @@ function NavBar(props) {
 					</IconButton>
 
 					<div className="brandName">
-						<img src={logoSizeM} alt="logo" /> <NavLink to='/'> SharpLearn</NavLink>
+						<img src={logoSizeM} alt="logo" /> <NavLink to="/"> SharpLearn</NavLink>
 					</div>
 
 					<NavLink to="/cart" className="phoneCartBtn">
