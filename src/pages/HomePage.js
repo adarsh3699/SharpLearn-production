@@ -114,8 +114,8 @@ function HomePage() {
 							<div class="courseType">{item?.courseType}</div>
 							<div class="otherCourseTitle">{item?.courseName}</div>
 							<div class="moreInfo">
-								<div>More Info</div>
-								<img src={arrow} alt="" />
+								<div className="otherCoursesPrice">₹{allCourses[0]?.courseDiscountedPrice},</div>
+								<div className="otherCoursesOrgPrice">₹{allCourses[0]?.courseORGPrice}</div>
 							</div>
 						</div>
 					</div>
@@ -126,7 +126,7 @@ function HomePage() {
 						<div class="courseType">Other</div>
 						<div class="otherCourseTitle">View other courses</div>
 						<div class="moreInfo">
-							<div>More Info</div>
+							<div>More</div>
 							<img src={arrow} alt="" />
 						</div>
 					</div>

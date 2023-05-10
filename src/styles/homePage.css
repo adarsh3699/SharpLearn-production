@@ -92,11 +92,18 @@
 	text-decoration-color: red;
 }
 
+/* ........homePage Other course slider........ */
 .homePageOtherCourses {
 	display: flex;
 	justify-content: space-between;
 	overflow-x: auto;
 	margin-bottom: 100px;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.homePageOtherCourses::-webkit-scrollbar {
+	display: none;
 }
 
 .otherCourseItem {
@@ -107,6 +114,7 @@
 	margin: 10px 16px 0;
 	min-width: 300px;
 	overflow: hidden;
+	cursor: pointer;
 }
 
 .otherCourseImg {
@@ -135,7 +143,7 @@
 }
 
 .aboutOtherCourse {
-	padding: 15px;
+	padding: 15px 15px 50px 15px;
 }
 
 .courseType {
@@ -152,14 +160,23 @@
 	font-size: 20px;
 	font-weight: 700;
 	margin-bottom: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .moreInfo {
 	display: flex;
 	align-items: center;
 	color: #0259eb;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 600;
+}
+
+.otherCoursesOrgPrice {
+	text-decoration: line-through;
+	text-decoration-color: red;
+	margin-left: 10px;
 }
 
 .moreInfo img {
@@ -192,5 +209,11 @@
 		width: 90%;
 		margin: 10px auto;
 		text-align: left;
+	}
+
+	/* ........homePage Other course slider........ */
+	.otherCourseItem {
+		min-width: 250px;
+		margin: 10px 10px 0;
 	}
 }
