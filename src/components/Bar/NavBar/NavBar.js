@@ -47,7 +47,7 @@ function NavBar(props) {
 			name: 'Courses',
 			isSelected: false,
 			icon: <MenuBookIcon />,
-			// page: <AccountSettings />,
+			page: '/Courses',
 		},
 		{
 			name: 'Contact',

@@ -1,15 +1,25 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { getAllcourses } from '../firebase//home.js';
+import { getcourses } from '../firebase/homePage.js';
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg.js';
 import MuiBtn from '../components/MuiBtn/MuiBtn.js';
 
 import Toolbar from '@mui/material/Toolbar';
+import Button from '@mui/material/Button';
+import DoneIcon from '@mui/icons-material/Done';
 
 import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 
 import '../styles/homePage.css';
+
+const keyPoints = [
+	{ title: 'Self-Paced', description: 'Watch Anytime, Anywhere Unlimited Video Playbacks for lifetime.' },
+	{ title: 'Unlimited', description: ' Lifetime access of course.' },
+	{ title: 'Language', description: 'Indian English and Hindi.' },
+	{ title: 'Support', description: '24/7 Student support line.' },
+
+]
 
 function HomePage() {
 	const [msg, setMsg] = useState({ text: '', type: '' });
@@ -28,7 +38,7 @@ function HomePage() {
 	}, []);
 
 	useEffect(() => {
-		getAllcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
+		getcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
 	}, [handleMsgShown]);
 
 	const handleAddToCartBtnClick = useCallback(
@@ -47,43 +57,40 @@ function HomePage() {
 
 	return (
 		<div className="homePage">
-			<div className="homePageContainer" component="main">
-				<Toolbar />
-				<Loader isLoading={isGetCourseApiLoading} />
-				{allCourses.map((item, index) => {
-					return (
-						<div className="courseBox" key={index}>
-							<img
-								className="courseImg"
-								src={item?.courseThumbnail || photoNotAvailable}
-								loading="lazy"
-								alt=""
-							/>
-							<div className="courseDetails">
-								<div className="courseTitle">{item?.courseName}</div>
-								<div className="aboutCourse">{item?.aboutCourse}</div>
-								<div className="coursePrice">₹{item?.courseDiscountedPrice}</div>
-								<MuiBtn
-									BtnTitle="Buy Now"
-									color="success"
-									sx={{ py: { xs: 0.5, sm: 1 }, px: { sx: 2, sm: 4 }, fontSize: { xs: 15, sm: 18 } }}
-								/>
-								<MuiBtn
-									BtnTitle="Add to Cart"
-									color="info"
-									sx={{
-										marginLeft: 3,
-										py: { xs: 0.5, sm: 1 },
-										px: { sx: 2, sm: 4 },
-										fontSize: { xs: 15, sm: 18 },
-									}}
-									onBtnClick={() => handleAddToCartBtnClick(item?.courseId)}
-								/>
-							</div>
-						</div>
-					);
-				})}
+			<Toolbar />
+			<div className="homePageTitle" component="main">
+				Learn with SharpLearn
 			</div>
+			<div className="homePageSharpLearnIntro">
+				<div>
+					Become a certified Software Developer with 100% Practical Learning from Beginner to Advance.
+					Kickstart Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire You!
+					Even if you're a complete beginner with zero knowledge
+				</div>
+
+
+				{keyPoints.map((item, index) =>
+
+					<div className='homePageKeyPoint' key={index}>
+						<DoneIcon sx={{ mr: 1 }} />
+						<div> <b>{item?.title}:- </b> {item?.description}</div>
+					</div>
+				)}
+			</div>
+			<div className='homePageCoursesTitle'>Courses🔗</div>
+			<div className="homePageTrendingCourses">
+				<img src={allCourses[0]?.courseThumbnail} className='TrendingCoursesImg' alt="" />
+				<div className='trendingDetailsBox'>
+					<div className='trendingCoursesTitle'>{allCourses[0]?.courseName}</div>
+					<div className='trendingCoursesAbout'>{allCourses[0]?.aboutCourse}</div>
+					<div className='trendingCoursesPriceSection'>
+						<div className='trendingCoursesPrice'>Now ₹{allCourses[0]?.courseDiscountedPrice},</div>
+						<div className='trendingCoursesOrgPrice'>₹{allCourses[0]?.courseORGPrice}</div>
+					</div>
+					<Button variant='contained' sx={{ mt: 2 }}>Buy Now </Button>
+				</div>
+			</div>
+
 			{msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />}
 		</div>
 	);

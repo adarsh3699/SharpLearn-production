@@ -7,6 +7,7 @@ import FootBar from './components/Bar/Footer/FootBar';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const CartPage = lazy(() => import('./pages/CartPage'));
+const CoursePage = lazy(() => import('./pages/CoursePage'));
 // const ForgetPasswordPage = lazy(() => import('./pages/ForgetPasswordPage'));
 // const CreateAcc = lazy(() => import('./pages/CreateAcc'));
 // const SettingsPage = lazy(() => import('./pages/SettingsPage'));
@@ -31,6 +32,17 @@ function Routes() {
 						<>
 							<NavBar />
 							<HomePage />
+							<FootBar />
+						</>
+					}
+				/>
+				<Route
+					exact
+					path="/Courses"
+					element={
+						<>
+							<NavBar />
+							<CoursePage />
 							<FootBar />
 						</>
 					}

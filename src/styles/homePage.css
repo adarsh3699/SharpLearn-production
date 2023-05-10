@@ -1,101 +1,94 @@
 .homePage {
-	min-height: 100vh;
+    min-height: 100vh;
+    padding: 0 15px;
 }
 
-.homePageContainer {
-	min-height: 100vh;
-	padding: 0 10px;
-	margin-bottom: 200px;
+.homePageTitle {
+    margin: 30px 0 20px 0;
+    text-align: center;
+    font-size: 60px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: var(--color-6Z-gr45-3);
+    text-shadow: 2px 2px 4px #7f8287;
 }
 
-.courseBox {
-	display: flex;
-	padding: 20px 0px;
-	border-bottom: 1px solid hsla(0, 0%, 100%, 0.3);
+.homePageSharpLearnIntro {
+    padding: 20px;
+    width: calc(100% - 40px);
+    margin: auto;
+    border-radius: 5px;
+    /* background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgb(222, 182, 147) 100%); */
+    background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgba(73, 165, 191, 0.56) 50%, rgb(222, 192, 147) 100%)
 }
 
-.courseBox:last-of-type {
-	border: unset;
-	padding-bottom: unset;
+.homePageKeyPoint {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
 }
 
-.courseBox:first-of-type {
-	padding-top: 0px;
+.homePageCoursesTitle {
+    margin: 20px 0;
+    font-size: 30px;
+    letter-spacing: 3px;
+    font-weight: 500;
+    color: var(--color-6Z-gr45-3);
+    text-shadow: 2px 2px 4px #7f8287;
 }
 
-.courseImg {
-	min-width: 450px;
-	max-width: 450px;
-	object-fit: cover;
-	aspect-ratio: 1/1;
-	border-radius: 10px;
+.homePageTrendingCourses {
+    display: flex;
+    margin: 20px 0;
 }
 
-.courseDetails {
-	margin-left: 30px;
+.TrendingCoursesImg {
+    width: 40%;
 }
 
-.courseTitle {
-	font-size: 40px;
-	font-weight: bold;
-	margin-bottom: 10px;
+.trendingDetailsBox {
+    margin-left: 20px;
 }
 
-.aboutCourse {
-	font-size: 20px;
-	font-weight: 500;
+.trendingCoursesTitle {
+    width: 55;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.coursePrice {
-	font-size: 50px;
-	font-weight: bold;
-	margin-bottom: 10px;
+.trendingCoursesAbout {
+    margin-bottom: 10px;
 }
+
+.trendingCoursesPriceSection {
+    display: flex;
+}
+
+.trendingCoursesPrice {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.trendingCoursesOrgPrice {
+    font-size: 30px;
+    font-weight: bold;
+    margin-right: 10px;
+    text-decoration: line-through;
+    text-decoration-color: red;
+}
+
+
 
 /* ------------M-web----------- */
 @media screen and (max-width: 1000px) {
-	.courseBox {
-		display: block;
-		text-align: center;
-	}
 
-	.courseTitle {
-		font-size: 35px;
-		margin-bottom: 15px;
-		line-height: 45px;
-	}
+    .homePageTitle {
+        font-size: 40px;
+    }
 
-	.courseDetails {
-		margin: unset;
-	}
-
-	.aboutCourse {
-		font-size: 18px;
-		margin-bottom: 10px;
-	}
-
-	.coursePrice {
-		margin-bottom: 20px;
-	}
-}
-
-@media screen and (max-width: 550px) {
-	.courseImg {
-		min-width: 90%;
-		max-width: 90%;
-	}
-
-	.courseTitle {
-		font-size: 25px;
-		line-height: 30px;
-	}
-
-	.aboutCourse {
-		font-size: 15px;
-	}
-
-	.coursePrice {
-		font-size: 35px;
-		/* margin-bottom: ; */
-	}
+    .homePageTrendingCourses {
+        display: block;
+    }
 }
