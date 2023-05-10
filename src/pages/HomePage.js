@@ -43,19 +43,25 @@ function HomePage() {
 		getcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
 	}, [handleMsgShown]);
 
-	const handleAddToCartBtnClick = useCallback(
-		(courseId) => {
-			const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
-			if (!userCart.includes(courseId)) {
-				userCart.push(courseId);
-				localStorage.setItem('user_cart', JSON.stringify(userCart));
-				handleMsgShown('Course Added to Cart', 'success');
-			} else {
-				handleMsgShown('Course Already in Cart', 'warning');
-			}
-		},
-		[handleMsgShown]
-	);
+	// const handleAddToCartBtnClick = useCallback(
+	// 	(courseId) => {
+	// 		const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
+	// 		if (!userCart.includes(courseId)) {
+	// 			userCart.push(courseId);
+	// 			localStorage.setItem('user_cart', JSON.stringify(userCart));
+	// 			handleMsgShown('Course Added to Cart', 'success');
+	// 		} else {
+	// 			handleMsgShown('Course Already in Cart', 'warning');
+	// 		}
+	// 	},
+	// 	[handleMsgShown]
+	// );
+
+	const handleCourseClick = useCallback((courseId) => {
+		console.log(courseId);
+		window.open(`/course/${courseId}`, '_blank');
+		// window.location = `/course/${courseId}`;
+	}, []);
 
 	return (
 		<div className="homePage">
@@ -81,7 +87,7 @@ function HomePage() {
 				))}
 			</div>
 			<div className="homePageCoursesTitle">
-				Trending Courses<div class="titleBorder"></div>
+				Trending Courses<div className="titleBorder"></div>
 			</div>
 			<div className="homePageTrendingCourses">
 				<img src={allCourses[0]?.courseThumbnail} className="TrendingCoursesImg" alt="" />
@@ -104,18 +110,18 @@ function HomePage() {
 			</div>
 
 			<div className="homePageCoursesTitle">
-				Other Courses<div class="titleBorder"></div>
+				Other Courses<div className="titleBorder"></div>
 			</div>
 			<div className="homePageOtherCourses">
 				{allCourses.map((item, index) => (
-					<div className="otherCourseItem" key={index}>
+					<div className="otherCourseItem" key={index} onClick={() => handleCourseClick(item?.courseId)}>
 						<img src={item?.courseThumbnail} className="otherCourseImg" alt="" />
 						<div className="aboutOtherCourse">
-							<div class="courseType">{item?.courseType}</div>
-							<div class="otherCourseTitle">{item?.courseName}</div>
-							<div class="moreInfo">
-								<div className="otherCoursesPrice">₹{allCourses[0]?.courseDiscountedPrice},</div>
-								<div className="otherCoursesOrgPrice">₹{allCourses[0]?.courseORGPrice}</div>
+							<div className="courseType">{item?.courseType}</div>
+							<div className="otherCourseTitle">{item?.courseName}</div>
+							<div className="moreInfo">
+								<div className="otherCoursesPrice">₹{item?.courseDiscountedPrice},</div>
+								<div className="otherCoursesOrgPrice">₹{item?.courseORGPrice}</div>
 							</div>
 						</div>
 					</div>
@@ -123,9 +129,9 @@ function HomePage() {
 				<div className="otherCourseItem">
 					<div className='otherCourseImg videOtherCourses'>View All</div>
 					<div className="aboutOtherCourse">
-						<div class="courseType">Other</div>
-						<div class="otherCourseTitle">View other courses</div>
-						<div class="moreInfo">
+						<div className="courseType">Other</div>
+						<div className="otherCourseTitle">View other courses</div>
+						<div className="moreInfo">
 							<div>More</div>
 							<img src={arrow} alt="" />
 						</div>

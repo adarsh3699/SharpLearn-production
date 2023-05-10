@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { getAllcourses } from '../firebase//coursePage.js';
+import { getAllcourses } from '../firebase/coursePage.js';
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg.js';
 import MuiBtn from '../components/MuiBtn/MuiBtn.js';
@@ -9,7 +9,7 @@ import Toolbar from '@mui/material/Toolbar';
 
 import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 
-import '../styles/coursePage.css';
+import '../styles/allCoursePage.css';
 
 function HomePage() {
 	const [msg, setMsg] = useState({ text: '', type: '' });

@@ -47,6 +47,7 @@
 
 .TrendingCoursesImg {
 	width: 40%;
+	min-height: 200px;
 }
 
 .trendingDetailsBox {
