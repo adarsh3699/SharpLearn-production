@@ -5,6 +5,7 @@ import { getcourses } from '../firebase/homePage.js';
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg.js';
 import MuiBtn from '../components/MuiBtn/MuiBtn.js';
+import CoursesSlider from '../components/OtherCoursesSlider/CoursesSlider.js';
 
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
@@ -86,6 +87,7 @@ function HomePage() {
 					</div>
 				))}
 			</div>
+
 			<div className="homePageCoursesTitle">
 				Trending Courses<div className="titleBorder"></div>
 			</div>
@@ -109,10 +111,11 @@ function HomePage() {
 				</div>
 			</div>
 
+			{/* Other Courses */}
 			<div className="homePageCoursesTitle">
 				Other Courses<div className="titleBorder"></div>
 			</div>
-			<div className="homePageOtherCourses">
+			{/* <div className="homePageOtherCourses">
 				{allCourses.map((item, index) => (
 					<div className="otherCourseItem" key={index} onClick={() => handleCourseClick(item?.courseId)}>
 						<img src={item?.courseThumbnail} className="otherCourseImg" alt="" />
@@ -127,7 +130,7 @@ function HomePage() {
 					</div>
 				))}
 				<div className="otherCourseItem">
-					<div className='otherCourseImg videOtherCourses'>View All</div>
+					<div className="otherCourseImg videOtherCourses">View All</div>
 					<div className="aboutOtherCourse">
 						<div className="courseType">Other</div>
 						<div className="otherCourseTitle">View other courses</div>
@@ -137,7 +140,9 @@ function HomePage() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
+
+			<CoursesSlider allCourses={allCourses} />
 
 			{msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />}
 		</div>

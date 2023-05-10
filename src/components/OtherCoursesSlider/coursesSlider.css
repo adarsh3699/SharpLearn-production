@@ -1,0 +1,97 @@
+.coursesSlider {
+	display: flex;
+	justify-content: space-between;
+	overflow-x: auto;
+	margin-bottom: 100px;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.coursesSlider::-webkit-scrollbar {
+	display: none;
+}
+
+.sliderCourseItem {
+	background: #111229;
+	border-radius: 8px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+	box-shadow: 8px -8px 0 1px #681a1a;
+	margin: 10px 16px 0;
+	min-width: 300px;
+	max-width: 300px;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.sliderCourseItemImg {
+	width: 100%;
+	aspect-ratio: 1;
+	background-color: 2px 2px 4px #7f8287;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 50px;
+}
+
+.sliderCourseItemImg:hover {
+	transition-duration: 0.8s;
+	transform: scale(1.05);
+	background-color: #0258eb7e;
+}
+
+.videOtherCourses {
+	width: 100%;
+	aspect-ratio: 1;
+}
+
+.videOtherCourses:hover {
+	background-color: #0258eb7e;
+}
+
+.sliderCourseDetailBox {
+	padding: 15px 15px 50px 15px;
+}
+
+.sliderItemCourseType {
+	background: #e5c558;
+	border-radius: 1px;
+	color: #682f26;
+	font-size: 15px;
+	margin-bottom: 10px;
+	padding: 1px 5px;
+	width: fit-content;
+}
+
+.sliderItemCourseTitle {
+	font-size: 20px;
+	font-weight: 700;
+	margin-bottom: 18px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.sliderItemCoursePriceBox {
+	display: flex;
+	align-items: center;
+	color: #0259eb;
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.sliderItemCoursePriceBox img {
+	margin-left: 10px;
+}
+
+.sliderItemCoursesOrgPrice {
+	text-decoration: line-through;
+	text-decoration-color: red;
+	margin-left: 10px;
+}
+
+@media screen and (max-width: 1000px) {
+	.sliderCourseItem {
+		min-width: 250px;
+		margin: 10px 10px 0;
+	}
+}

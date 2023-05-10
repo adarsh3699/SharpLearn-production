@@ -1,3 +1,71 @@
 .courseDetailsPage {
-    height: 100vh;
+	min-height: 100vh;
+}
+
+.courseDetailsBox {
+	display: flex;
+	margin: 20px;
+}
+
+/* ...................left Box................. */
+.courseDetailsBoxLeft {
+	width: 50%;
+}
+
+.courseDetailImage {
+	width: 95%;
+	border-radius: 10px;
+}
+
+/* ...................Right Box................. */
+
+.courseDetailsBoxRight {
+	width: 50%;
+}
+
+.courseTypeShare {
+	display: flex;
+	justify-content: space-between;
+	width: 90%;
+	align-items: center;
+	/* background: red; */
+	text-transform: uppercase;
+	font-size: 20px;
+	margin-bottom: 10px;
+}
+
+.openCourseTitle {
+	font-size: 30px;
+	font-weight: 600;
+	margin-bottom: 10px;
+}
+
+.openCourseDesc {
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
+.openCourseDisPrice {
+	font-size: 30px;
+	font-weight: bold;
+	vertical-align: sub;
+}
+
+.openCourseOrgPrice {
+	font-size: 20px;
+	margin: 0 10px;
+	color: #cac9c9;
+	text-decoration: line-through;
+}
+
+.openCourseDisPricePercent {
+	font-size: 20px;
+	font-weight: bold;
+	color: #47af4c;
+}
+
+.youtubeVideoIframe {
+	width: 90%;
+	aspect-ratio: 16/8;
+	margin-bottom: 50px;
 }

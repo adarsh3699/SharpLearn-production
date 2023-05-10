@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 
-import { getAllcourses } from '../firebase/coursePage.js';
+import { getAllcourses } from '../firebase/allCoursePage.js';
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg.js';
 import MuiBtn from '../components/MuiBtn/MuiBtn.js';

@@ -19,10 +19,12 @@
 	margin: auto;
 	border-radius: 5px;
 	/* background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgb(222, 182, 147) 100%); */
-	background: -webkit-linear-gradient(-45deg,
-			rgba(73, 165, 191, 0.32) 0%,
-			rgba(73, 165, 191, 0.56) 50%,
-			rgb(222, 192, 147) 100%);
+	background: -webkit-linear-gradient(
+		-45deg,
+		rgba(73, 165, 191, 0.32) 0%,
+		rgba(73, 165, 191, 0.56) 50%,
+		rgb(222, 192, 147) 100%
+	);
 }
 
 .homePageKeyPoint {
@@ -93,97 +95,6 @@
 	text-decoration-color: red;
 }
 
-/* ........homePage Other course slider........ */
-.homePageOtherCourses {
-	display: flex;
-	justify-content: space-between;
-	overflow-x: auto;
-	margin-bottom: 100px;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
-}
-
-.homePageOtherCourses::-webkit-scrollbar {
-	display: none;
-}
-
-.otherCourseItem {
-	background: #111229;
-	border-radius: 8px;
-	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-	box-shadow: 8px -8px 0 1px #681a1a;
-	margin: 10px 16px 0;
-	min-width: 300px;
-	overflow: hidden;
-	cursor: pointer;
-}
-
-.otherCourseImg {
-	width: 100%;
-	aspect-ratio: 1;
-	background-color: 2px 2px 4px #7f8287;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 50px;
-}
-
-.otherCourseImg:hover {
-	transition-duration: .8s;
-	transform: scale(1.05);
-	background-color: #0258eb7e;
-}
-
-.videOtherCourses {
-	width: 100%;
-	aspect-ratio: 1;
-}
-
-.videOtherCourses:hover {
-	background-color: #0258eb7e;
-}
-
-.aboutOtherCourse {
-	padding: 15px 15px 50px 15px;
-}
-
-.courseType {
-	background: #e5c558;
-	border-radius: 1px;
-	color: #682f26;
-	font-size: 15px;
-	margin-bottom: 10px;
-	padding: 1px 5px;
-	width: fit-content;
-}
-
-.otherCourseTitle {
-	font-size: 20px;
-	font-weight: 700;
-	margin-bottom: 18px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.moreInfo {
-	display: flex;
-	align-items: center;
-	color: #0259eb;
-	font-size: 20px;
-	font-weight: 600;
-}
-
-.otherCoursesOrgPrice {
-	text-decoration: line-through;
-	text-decoration-color: red;
-	margin-left: 10px;
-}
-
-.moreInfo img {
-	margin-left: 10px;
-}
-
 /* ------------M-web----------- */
 @media screen and (max-width: 1000px) {
 	.homePageTitle {
@@ -210,11 +121,5 @@
 		width: 90%;
 		margin: 10px auto;
 		text-align: left;
-	}
-
-	/* ........homePage Other course slider........ */
-	.otherCourseItem {
-		min-width: 250px;
-		margin: 10px 10px 0;
 	}
 }
