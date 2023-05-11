@@ -66,7 +66,6 @@ function getCourseDetails(courseId, setCourseDetail, setIsGetCourseApiLoading, h
 function getOtherCourses(courseId, setOtherCourses, setIsGetCourseApiLoading, handleMsgShown) {
 	if (!courseId) return setIsGetCourseApiLoading(false);
 	const getDataQuery = query(colRef, where('courseId', '!=', courseId), limit(5)); // orderBy('name', 'desc || ase')  where('courseId', 'in', ['PvULuhJoNuCk7S8Ty1Oo', '9FhQjNp1LBrsw6ilGOuO'])
-	setIsGetCourseApiLoading(true);
 	onSnapshot(
 		colRef,
 		async (realSnapshot) => {
@@ -87,18 +86,17 @@ function getOtherCourses(courseId, setOtherCourses, setIsGetCourseApiLoading, ha
 							updatedOn: doc.data()?.updatedOn,
 						});
 					});
-					setIsGetCourseApiLoading(false);
+					// setIsGetCourseApiLoading(false);
 					setOtherCourses(allCourses || []);
-					console.log(allCourses || {});
 				})
 				.catch((err) => {
-					setIsGetCourseApiLoading(false);
+					// setIsGetCourseApiLoading(false);
 					console.log(err.message);
 					handleMsgShown(err.code, 'error');
 				});
 		},
 		(err) => {
-			setIsGetCourseApiLoading(false);
+			// setIsGetCourseApiLoading(false);
 			console.log(err);
 			handleMsgShown(err.code, 'error');
 		}

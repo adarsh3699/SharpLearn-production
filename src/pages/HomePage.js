@@ -26,7 +26,7 @@ const keyPoints = [
 
 function HomePage() {
 	const [msg, setMsg] = useState({ text: '', type: '' });
-	const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(false);
+	const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
 	const [allCourses, setAllCourses] = useState([]);
 
 	const handleMsgShown = useCallback((msgText, type) => {
@@ -87,62 +87,39 @@ function HomePage() {
 					</div>
 				))}
 			</div>
-
-			<div className="homePageCoursesTitle">
-				Trending Courses<div className="titleBorder"></div>
-			</div>
-			<div className="homePageTrendingCourses">
-				<img src={allCourses[0]?.courseThumbnail} className="TrendingCoursesImg" alt="" />
-				<div className="trendingDetailsBox">
-					<div className="trendingCoursesTitle">{allCourses[0]?.courseName}</div>
-					<div className="trendingCoursesAbout">{allCourses[0]?.aboutCourse}</div>
-					<div className="trendingCoursesPriceSection">
-						<div className="trendingCoursesPrice">Now ₹{allCourses[0]?.courseDiscountedPrice},</div>
-						<div className="trendingCoursesOrgPrice">₹{allCourses[0]?.courseORGPrice}</div>
+			<Loader isLoading={isGetCourseApiLoading} sx={{ marginTop: '20px' }} />
+			{!isGetCourseApiLoading &&
+				<>
+					<div className="homePageCoursesTitle">
+						Trending Courses<div className="titleBorder"></div>
 					</div>
-					<Button variant="contained" sx={{ mt: 2, mr: 2 }}>
-						Buy Now{' '}
-					</Button>
-					<NavLink to="/All_Courses" className="navLink">
-						<Button variant="contained" sx={{ mt: 2 }}>
-							Our Other Courses.
-						</Button>
-					</NavLink>
-				</div>
-			</div>
-
-			{/* Other Courses */}
-			<div className="homePageCoursesTitle">
-				Other Courses<div className="titleBorder"></div>
-			</div>
-			{/* <div className="homePageOtherCourses">
-				{allCourses.map((item, index) => (
-					<div className="otherCourseItem" key={index} onClick={() => handleCourseClick(item?.courseId)}>
-						<img src={item?.courseThumbnail} className="otherCourseImg" alt="" />
-						<div className="aboutOtherCourse">
-							<div className="courseType">{item?.courseType}</div>
-							<div className="otherCourseTitle">{item?.courseName}</div>
-							<div className="moreInfo">
-								<div className="otherCoursesPrice">₹{item?.courseDiscountedPrice},</div>
-								<div className="otherCoursesOrgPrice">₹{item?.courseORGPrice}</div>
+					<div className="homePageTrendingCourses">
+						<img src={allCourses[0]?.courseThumbnail} onClick={() => handleCourseClick(allCourses[0]?.courseId)} className="TrendingCoursesImg" alt="" />
+						<div className="trendingDetailsBox">
+							<div className="trendingCoursesTitle">{allCourses[0]?.courseName}</div>
+							<div className="trendingCoursesAbout">{allCourses[0]?.aboutCourse}</div>
+							<div className="trendingCoursesPriceSection">
+								<div className="trendingCoursesPrice">Now ₹{allCourses[0]?.courseDiscountedPrice},</div>
+								<div className="trendingCoursesOrgPrice">₹{allCourses[0]?.courseORGPrice}</div>
 							</div>
+							<Button href={'/course/' + allCourses[0]?.courseId} target='_blank' variant="contained" sx={{ mt: 2, mr: 2 }}>
+								Buy Now{' '}
+							</Button>
+							<NavLink to="/All_Courses" className="navLink">
+								<Button variant="contained" sx={{ mt: 2 }}>
+									Our Other Courses.
+								</Button>
+							</NavLink>
 						</div>
 					</div>
-				))}
-				<div className="otherCourseItem">
-					<div className="otherCourseImg videOtherCourses">View All</div>
-					<div className="aboutOtherCourse">
-						<div className="courseType">Other</div>
-						<div className="otherCourseTitle">View other courses</div>
-						<div className="moreInfo">
-							<div>More</div>
-							<img src={arrow} alt="" />
-						</div>
+					{/* Other Courses */}
+					<div className="homePageCoursesTitle">
+						Other Courses<div className="titleBorder"></div>
 					</div>
-				</div>
-			</div> */}
 
-			<CoursesSlider allCourses={allCourses} />
+					<CoursesSlider allCourses={allCourses} />
+				</>
+			}
 
 			{msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />}
 		</div>

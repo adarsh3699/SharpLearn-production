@@ -12,11 +12,7 @@
 	display: flex;
 	padding: 20px 0px;
 	border-bottom: 1px solid hsla(0, 0%, 100%, 0.3);
-}
-
-.courseBox:last-of-type {
-	border: unset;
-	padding-bottom: unset;
+	cursor: pointer;
 }
 
 .courseBox:first-of-type {
@@ -24,8 +20,8 @@
 }
 
 .courseImg {
-	min-width: 450px;
-	max-width: 450px;
+	min-width: 350px;
+	max-width: 350px;
 	object-fit: cover;
 	aspect-ratio: 1/1;
 	border-radius: 10px;
@@ -46,10 +42,30 @@
 	font-weight: 500;
 }
 
-.coursePrice {
+.coursePriceBox {
+	margin-top: 20px;
+}
+
+.courseDisPrice {
 	font-size: 50px;
 	font-weight: bold;
 	margin-bottom: 10px;
+	vertical-align: sub;
+}
+
+.courseOrgPrice {
+	font-size: 30px;
+	font-weight: 500;
+	text-decoration: line-through;
+	margin-left: 10px;
+	text-decoration-color: red;
+}
+
+.courseDiscountPercent {
+	font-size: 30px;
+	font-weight: 600;
+	margin-left: 10px;
+	color: rgb(109, 255, 47);
 }
 
 /* ------------M-web----------- */

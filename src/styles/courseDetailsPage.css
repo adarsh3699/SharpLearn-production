@@ -1,10 +1,11 @@
 .courseDetailsPage {
 	min-height: 100vh;
+	padding: 0 15px;
 }
 
 .courseDetailsBox {
 	display: flex;
-	margin: 20px;
+	margin: 50px 20px;
 }
 
 /* ...................left Box................. */
@@ -65,7 +66,53 @@
 }
 
 .youtubeVideoIframe {
+	margin: auto;
+	display: block;
 	width: 90%;
 	aspect-ratio: 16/8;
 	margin-bottom: 50px;
+}
+
+.CoursesDemoTitle {
+	margin: 30px 0 20px 0;
+	font-size: 30px;
+	letter-spacing: 3px;
+	font-weight: 500;
+	color: var(--color-6Z-gr45-3);
+	text-shadow: 2px 2px 4px #7f8287;
+}
+
+.titleBorder {
+	background: #0259eb;
+	border-radius: 16px;
+	height: 3px;
+	left: 152px;
+	margin-top: 8px;
+	top: 1626px;
+	width: 48px;
+}
+
+/* ...................M-Web................. */
+@media screen and (max-width: 1000px) {
+	.courseDetailsBox {
+		display: inline;
+		/* margin: 20px; */
+	}
+
+	.courseDetailsBoxLeft {
+		width: unset;
+		text-align: center;
+	}
+
+	.courseDetailsBoxRight {
+		width: unset;
+	}
+
+	.courseTypeShare {
+		width: unset;
+	}
+
+	.youtubeVideoIframe {
+		width: 100%;
+	}
 }

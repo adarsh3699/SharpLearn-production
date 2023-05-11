@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 
-// import photoNotAvailable from '../images/photoNotAvailable.jpeg';
+import photoNotAvailable from '../../images/photoNotAvailable.jpeg';
 import arrow from '../../images/arrow.svg';
 
 import './coursesSlider.css';
@@ -16,7 +16,7 @@ function CoursesSlider({ allCourses }) {
 		<div className="coursesSlider">
 			{allCourses.map((item, index) => (
 				<div className="sliderCourseItem" key={index} onClick={() => handleCourseClick(item?.courseId)}>
-					<img src={item?.courseThumbnail} className="sliderCourseItemImg" alt="" />
+					<img src={item?.courseThumbnail || photoNotAvailable} className="sliderCourseItemImg" alt="" />
 					<div className="sliderCourseDetailBox">
 						<div className="sliderItemCourseType">{item?.courseType}</div>
 						<div className="sliderItemCourseTitle">{item?.courseName}</div>
@@ -27,7 +27,7 @@ function CoursesSlider({ allCourses }) {
 					</div>
 				</div>
 			))}
-			<NavLink to='/All_Courses' className="sliderCourseItem">
+			<NavLink to="/All_Courses" className="sliderCourseItem">
 				<div className="sliderCourseItemImg videOtherCourses">View All</div>
 				<div className="sliderCourseDetailBox">
 					<div className="sliderItemCourseType">Other</div>

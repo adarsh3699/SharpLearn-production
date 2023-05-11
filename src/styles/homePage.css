@@ -19,12 +19,10 @@
 	margin: auto;
 	border-radius: 5px;
 	/* background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgb(222, 182, 147) 100%); */
-	background: -webkit-linear-gradient(
-		-45deg,
-		rgba(73, 165, 191, 0.32) 0%,
-		rgba(73, 165, 191, 0.56) 50%,
-		rgb(222, 192, 147) 100%
-	);
+	background: -webkit-linear-gradient(-45deg,
+			rgba(73, 165, 191, 0.32) 0%,
+			rgba(73, 165, 191, 0.56) 50%,
+			rgb(222, 192, 147) 100%);
 }
 
 .homePageKeyPoint {
@@ -50,6 +48,14 @@
 .TrendingCoursesImg {
 	width: 40%;
 	min-height: 200px;
+	border-radius: 10px;
+}
+
+.TrendingCoursesImg:hover {
+	cursor: pointer;
+	transition-duration: 0.5s;
+	transform: scale(1.02);
+	background-color: #0258eb7e;
 }
 
 .trendingDetailsBox {
