@@ -197,7 +197,21 @@
 }
 
 @media screen and (max-width: 550px) {
+	#myIntro {
+		margin: 20px 0;
+	}
+
 	.line-1 {
 		font-size: 25px;
+	}
+
+	.homePageaboutSharpLearn {
+		font-size: 15px;
+		line-height: 20px;
+		text-align: center;
+	}
+
+	.homePageSharpLearnIntro {
+		font-size: 15px;
 	}
 }
