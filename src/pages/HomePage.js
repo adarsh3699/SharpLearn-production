@@ -4,16 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { getcourses } from '../firebase/homePage.js';
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg.js';
-import MuiBtn from '../components/MuiBtn/MuiBtn.js';
 import CoursesSlider from '../components/OtherCoursesSlider/CoursesSlider.js';
 
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import DoneIcon from '@mui/icons-material/Done';
 
-import photoNotAvailable from '../images/photoNotAvailable.jpeg';
-import arrow from '../images/arrow.svg';
-import viewImg from '../images/view.png';
+// import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 
 import '../styles/homePage.css';
 
@@ -67,16 +64,22 @@ function HomePage() {
 	return (
 		<div className="homePage">
 			<Toolbar />
-			<div className="homePageTitle" component="main">
-				Learn with SharpLearn
-			</div>
-			<div className="homePageSharpLearnIntro">
-				<div>
-					Become a certified Software Developer with 100% Practical Learning from Beginner to Advance.
-					Kickstart Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire
-					You! Even if you're a complete beginner with zero knowledge
-				</div>
 
+			<div id="myIntro">
+				<div className="welcome_msg">
+					<p className="line-1 anim-typewriter">
+						Learn with <span id="fName">SharpLearn</span>
+					</p>
+				</div>
+			</div>
+
+			<div className='homePageaboutSharpLearn'>
+				Become a certified Software Developer with 100% Practical Learning from Beginner to Advance.
+				Kickstart Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire
+				You! Even if you're a complete beginner with zero knowledge
+			</div>
+
+			<div className="homePageSharpLearnIntro">
 				{keyPoints.map((item, index) => (
 					<div className="homePageKeyPoint" key={index}>
 						<DoneIcon sx={{ mr: 1 }} />
