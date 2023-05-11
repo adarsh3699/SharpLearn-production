@@ -27,7 +27,7 @@ function CoursesSlider({ allCourses }) {
 					</div>
 				</div>
 			))}
-			<div className="sliderCourseItem">
+			<NavLink to='/All_Courses' className="sliderCourseItem">
 				<div className="sliderCourseItemImg videOtherCourses">View All</div>
 				<div className="sliderCourseDetailBox">
 					<div className="sliderItemCourseType">Other</div>
@@ -37,7 +37,7 @@ function CoursesSlider({ allCourses }) {
 						<img src={arrow} alt="" />
 					</div>
 				</div>
-			</div>
+			</NavLink>
 		</div>
 	);
 }

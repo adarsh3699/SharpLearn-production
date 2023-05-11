@@ -21,6 +21,8 @@
 	max-width: 300px;
 	overflow: hidden;
 	cursor: pointer;
+	color: white;
+	text-decoration: unset;
 }
 
 .sliderCourseItemImg {

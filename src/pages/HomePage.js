@@ -103,7 +103,7 @@ function HomePage() {
 					<Button variant="contained" sx={{ mt: 2, mr: 2 }}>
 						Buy Now{' '}
 					</Button>
-					<NavLink to="/courses" className="navLink">
+					<NavLink to="/All_Courses" className="navLink">
 						<Button variant="contained" sx={{ mt: 2 }}>
 							Our Other Courses.
 						</Button>

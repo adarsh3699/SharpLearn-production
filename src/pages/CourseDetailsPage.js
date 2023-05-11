@@ -114,7 +114,7 @@ function HomePage() {
 			</div>
 
 			<iframe
-				className='youtubeVideoIframe'
+				className="youtubeVideoIframe"
 				src="https://www.youtube.com/embed/g_DHKoj7n8U"
 				title="YouTube video player"
 				frameborder="0"
