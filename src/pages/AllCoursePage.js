@@ -30,19 +30,19 @@ function HomePage() {
 		getAllcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
 	}, [handleMsgShown]);
 
-	const handleAddToCartBtnClick = useCallback(
-		(courseId) => {
-			const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
-			if (!userCart.includes(courseId)) {
-				userCart.push(courseId);
-				localStorage.setItem('user_cart', JSON.stringify(userCart));
-				handleMsgShown('Course Added to Cart', 'success');
-			} else {
-				handleMsgShown('Course Already in Cart', 'warning');
-			}
-		},
-		[handleMsgShown]
-	);
+	// const handleAddToCartBtnClick = useCallback(
+	// 	(courseId) => {
+	// 		const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
+	// 		if (!userCart.includes(courseId)) {
+	// 			userCart.push(courseId);
+	// 			localStorage.setItem('user_cart', JSON.stringify(userCart));
+	// 			handleMsgShown('Course Added to Cart', 'success');
+	// 		} else {
+	// 			handleMsgShown('Course Already in Cart', 'warning');
+	// 		}
+	// 	},
+	// 	[handleMsgShown]
+	// );
 
 	const handleCourseClick = useCallback((courseId) => {
 		console.log(courseId);
