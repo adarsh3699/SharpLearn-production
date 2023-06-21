@@ -89,10 +89,6 @@
 		font-size: 18px;
 		margin-bottom: 10px;
 	}
-
-	.coursePrice {
-		margin-bottom: 20px;
-	}
 }
 
 @media screen and (max-width: 550px) {
@@ -110,8 +106,15 @@
 		font-size: 15px;
 	}
 
-	.coursePrice {
+	.courseDisPrice {
 		font-size: 35px;
-		/* margin-bottom: ; */
+	}
+
+	.courseOrgPrice {
+		font-size: 20px;
+	}
+
+	.courseDiscountPercent {
+		font-size: 20px;
 	}
 }

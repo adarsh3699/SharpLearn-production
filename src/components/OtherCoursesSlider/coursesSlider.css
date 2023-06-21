@@ -1,6 +1,6 @@
 .coursesSlider {
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: space-between; */
 	overflow-x: auto;
 	margin-bottom: 100px;
 	-ms-overflow-style: none;

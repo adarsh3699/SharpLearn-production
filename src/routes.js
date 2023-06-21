@@ -2,8 +2,6 @@ import React, { Suspense, lazy } from 'react';
 import { Routes as Switch, Route } from 'react-router-dom';
 
 import Loader from './components/Loader/Loader';
-import NavBar from './components/Bar/NavBar/NavBar';
-import FootBar from './components/Bar/Footer/FootBar';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const CartPage = lazy(() => import('./pages/CartPage'));
@@ -31,9 +29,7 @@ function Routes() {
 					path="/"
 					element={
 						<>
-							<NavBar />
 							<HomePage />
-							<FootBar />
 						</>
 					}
 				/>
@@ -42,9 +38,7 @@ function Routes() {
 					path="/All_Courses"
 					element={
 						<>
-							<NavBar />
 							<CoursePage />
-							<FootBar />
 						</>
 					}
 				/>
@@ -53,9 +47,7 @@ function Routes() {
 					path="/cart"
 					element={
 						<>
-							<NavBar />
 							<CartPage />
-							<FootBar />
 						</>
 					}
 				/>
@@ -64,9 +56,7 @@ function Routes() {
 					path="/course/*"
 					element={
 						<>
-							<NavBar />
 							<CourseDetailsPage />
-							<FootBar />
 						</>
 					}
 				/>

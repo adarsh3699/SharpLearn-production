@@ -73,10 +73,10 @@ function HomePage() {
 				</div>
 			</div>
 
-			<div className='homePageaboutSharpLearn'>
-				Become a certified Software Developer with 100% Practical Learning from Beginner to Advance.
-				Kickstart Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire
-				You! Even if you're a complete beginner with zero knowledge
+			<div className="homePageaboutSharpLearn">
+				Become a certified Software Developer with 100% Practical Learning from Beginner to Advance. Kickstart
+				Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire You! Even if
+				you're a complete beginner with zero knowledge
 			</div>
 
 			<div className="homePageSharpLearnIntro">
@@ -91,13 +91,18 @@ function HomePage() {
 				))}
 			</div>
 			<Loader isLoading={isGetCourseApiLoading} sx={{ marginTop: '20px' }} />
-			{!isGetCourseApiLoading &&
+			{!isGetCourseApiLoading && (
 				<>
 					<div className="homePageCoursesTitle">
 						Trending Courses<div className="titleBorder"></div>
 					</div>
 					<div className="homePageTrendingCourses">
-						<img src={allCourses[0]?.courseThumbnail} onClick={() => handleCourseClick(allCourses[0]?.courseId)} className="TrendingCoursesImg" alt="" />
+						<img
+							src={allCourses[0]?.courseThumbnail}
+							onClick={() => handleCourseClick(allCourses[0]?.courseId)}
+							className="TrendingCoursesImg"
+							alt=""
+						/>
 						<div className="trendingDetailsBox">
 							<div className="trendingCoursesTitle">{allCourses[0]?.courseName}</div>
 							<div className="trendingCoursesAbout">{allCourses[0]?.aboutCourse}</div>
@@ -105,7 +110,12 @@ function HomePage() {
 								<div className="trendingCoursesPrice">Now ₹{allCourses[0]?.courseDiscountedPrice},</div>
 								<div className="trendingCoursesOrgPrice">₹{allCourses[0]?.courseORGPrice}</div>
 							</div>
-							<Button href={'/course/' + allCourses[0]?.courseId} target='_blank' variant="contained" sx={{ mt: 2, mr: 2 }}>
+							<Button
+								href={'/course/' + allCourses[0]?.courseId}
+								target="_blank"
+								variant="contained"
+								sx={{ mt: 2, mr: 2 }}
+							>
 								Buy Now{' '}
 							</Button>
 							<NavLink to="/All_Courses" className="navLink">
@@ -122,7 +132,7 @@ function HomePage() {
 
 					<CoursesSlider allCourses={allCourses} />
 				</>
-			}
+			)}
 
 			{msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />}
 		</div>

@@ -3,7 +3,6 @@
 	padding: 0 15px;
 }
 
-
 /*-----blank page animation-------*/
 #myIntro {
 	display: flex;
@@ -38,7 +37,6 @@
 #lName {
 	color: #f3246f;
 }
-
 
 /*----------------Animation--------------- */
 .anim-typewriter {
@@ -78,10 +76,12 @@
 	margin: auto;
 	border-radius: 5px;
 	/* background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgb(222, 182, 147) 100%); */
-	background: -webkit-linear-gradient(-45deg,
-			rgba(73, 165, 191, 0.32) 0%,
-			rgba(73, 165, 191, 0.56) 50%,
-			rgb(222, 192, 147) 100%);
+	background: -webkit-linear-gradient(
+		-45deg,
+		rgba(73, 165, 191, 0.32) 0%,
+		rgba(73, 165, 191, 0.56) 50%,
+		rgb(222, 192, 147) 100%
+	);
 }
 
 .homePageKeyPoint {
@@ -171,7 +171,6 @@
 		font-size: 40px;
 		letter-spacing: 1.5px;
 	}
-
 
 	.homePageSharpLearnIntro {
 		padding: 10px;

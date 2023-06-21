@@ -67,10 +67,17 @@ function HomePage() {
 							<div className="courseDetails">
 								<div className="courseTitle">{item?.courseName}</div>
 								<div className="aboutCourse">{item?.aboutCourse}</div>
-								<div className='coursePriceBox'>
+								<div className="coursePriceBox">
 									<span className="courseDisPrice">₹{item?.courseDiscountedPrice}</span>
 									<span className="courseOrgPrice">₹{item?.courseORGPrice}</span>
-									<span className="courseDiscountPercent">{((item?.courseORGPrice - item?.courseDiscountedPrice) / item?.courseORGPrice * 100).toFixed(2)}% off</span>
+									<span className="courseDiscountPercent">
+										{(
+											((item?.courseORGPrice - item?.courseDiscountedPrice) /
+												item?.courseORGPrice) *
+											100
+										).toFixed(2)}
+										% off
+									</span>
 								</div>
 							</div>
 						</div>

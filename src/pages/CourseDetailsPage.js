@@ -73,12 +73,21 @@ function HomePage() {
 				<>
 					<div className="courseDetailsBox">
 						<div className="courseDetailsBoxLeft">
-							<img src={courseDetail?.courseThumbnail || photoNotAvailable} className="courseDetailImage" alt="" />
+							<img
+								src={courseDetail?.courseThumbnail || photoNotAvailable}
+								className="courseDetailImage"
+								alt=""
+							/>
 						</div>
 						<div className="courseDetailsBoxRight">
 							<div className="courseTypeShare">
 								<div className="courseDetailType">{courseDetail?.courseType}</div>
-								<Tooltip title={<span style={{ fontSize: '17px', padding: '5px' }}>{shareBtnTooltip}</span>} style={{ fontSize: 20 }} arrow placement="top">
+								<Tooltip
+									title={<span style={{ fontSize: '17px', padding: '5px' }}>{shareBtnTooltip}</span>}
+									style={{ fontSize: 20 }}
+									arrow
+									placement="top"
+								>
 									<IconButton aria-label="delete" onClick={handleShareBtnClick}>
 										<IosShareIcon />
 									</IconButton>
@@ -91,9 +100,11 @@ function HomePage() {
 								<span className="openCourseDisPrice">₹{courseDetail?.courseDiscountedPrice}</span>
 								<span className="openCourseOrgPrice">₹{courseDetail?.courseORGPrice}</span>
 								<span className="openCourseDisPricePercent">
-									{(((courseDetail?.courseORGPrice - courseDetail?.courseDiscountedPrice) /
-										courseDetail?.courseORGPrice) *
-										100).toFixed(2)}
+									{(
+										((courseDetail?.courseORGPrice - courseDetail?.courseDiscountedPrice) /
+											courseDetail?.courseORGPrice) *
+										100
+									).toFixed(2)}
 									% off
 								</span>
 							</div>
@@ -126,7 +137,7 @@ function HomePage() {
 
 					<iframe
 						className="youtubeVideoIframe"
-						src={"https://www.youtube-nocookie.com/embed/" + courseDetail?.demoVideo}
+						src={'https://www.youtube-nocookie.com/embed/' + courseDetail?.demoVideo}
 						title="YouTube video player"
 						frameBorder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -138,11 +149,10 @@ function HomePage() {
 					</div>
 					<CoursesSlider allCourses={othercourses} />
 				</>
-			)
-			}
+			)}
 
 			{msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />}
-		</div >
+		</div>
 	);
 }
 
