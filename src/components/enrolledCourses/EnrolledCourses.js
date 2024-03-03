@@ -9,9 +9,10 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
-const local_enrolled_courses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
 function EnrolledCourses() {
-	const [enrolled_courses, setEnrolled_courses] = useState(local_enrolled_courses);
+	const [enrolled_courses, setEnrolled_courses] = useState(
+		JSON.parse(localStorage.getItem('enrolled_courses')) || []
+	);
 
 	const handleMarkAsCompletedBtn = useCallback(
 		(courseId) => {
@@ -27,7 +28,9 @@ function EnrolledCourses() {
 		[enrolled_courses]
 	);
 
-	console.log(local_enrolled_courses);
+	const handleCourseClick = useCallback((courseId) => {
+		window.location = `/course/${courseId}`;
+	}, []);
 
 	return (
 		<div name="enrolledCourseSection">
@@ -44,10 +47,7 @@ function EnrolledCourses() {
 							alt=""
 						/>
 						<div className="enrolledCourseDetailSection">
-							<div
-								className="enrolledCourseTitle"
-								//  onClick={() => handleCourseClick(item?.courseId)}
-							>
+							<div className="enrolledCourseTitle" onClick={() => handleCourseClick(item?.courseId)}>
 								{item?.courseName}
 							</div>
 							<div className="enrolledCourseType">By {item?.courseType}</div>
@@ -60,7 +60,6 @@ function EnrolledCourses() {
 								onClick={() => handleMarkAsCompletedBtn(item?.courseId)}
 								sx={{ marginTop: '10px' }}
 							>
-								{console.log(item?.isCompleated ? 'Mark as Completed' : 'Completed')}
 								{item?.isCompleated ? 'Completed' : 'Mark as Completed'}
 							</Button>
 						</div>

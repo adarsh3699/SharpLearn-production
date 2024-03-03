@@ -45,9 +45,8 @@ function HomePage() {
 	// );
 
 	const handleCourseClick = useCallback((courseId) => {
-		console.log(courseId);
-		window.open(`/course/${courseId}`, '_blank');
-		// window.location = `/course/${courseId}`;
+		// navigate(`/course/${courseId}`);
+		window.location = `/course/${courseId}`;
 	}, []);
 
 	return (

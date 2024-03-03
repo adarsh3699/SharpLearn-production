@@ -22,14 +22,11 @@ const keyPoints = [
 	{ title: 'Support', description: '24/7 Student support line.' },
 ];
 
-const currentLocalBalance = localStorage.getItem('current_balance');
-if (!currentLocalBalance && currentLocalBalance !== 0) localStorage.setItem('current_balance', 10000);
-
 function HomePage() {
 	// const [msg, setMsg] = useState({ text: '', type: '' });
 	// const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
 	// const [allCourses, setAllCourses] = useState([]);
-	const currentBalance = currentLocalBalance || 10000;
+	const currentBalance = localStorage.getItem('current_balance') || 10000;
 
 	// const handleMsgShown = useCallback((msgText, type) => {
 	// 	if (msgText) {

@@ -1,23 +1,5 @@
-import { getAuth } from 'firebase/auth';
-// import { encryptText, decryptText } from '../utils';
+import { getFirestore, collection, onSnapshot, getDocs, query, orderBy } from 'firebase/firestore';
 
-import {
-	getFirestore,
-	collection,
-	onSnapshot,
-	getDocs,
-	addDoc,
-	deleteDoc,
-	updateDoc,
-	doc,
-	query,
-	where,
-	limit,
-	serverTimestamp,
-	orderBy,
-} from 'firebase/firestore';
-
-const auth = getAuth();
 const database = getFirestore();
 // collection ref
 const colRef = collection(database, 'All_Courses');
@@ -49,7 +31,7 @@ function getAllcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown) 
 					});
 					setIsGetCourseApiLoading(false);
 					setAllCourses(allCourses);
-					console.log(allCourses);
+					// console.log(allCourses);
 				})
 				.catch((err) => {
 					setIsGetCourseApiLoading(false);

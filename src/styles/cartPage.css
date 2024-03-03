@@ -158,8 +158,8 @@
 	}
 
 	.cartCourseImg {
-		min-width: 90%;
-		max-width: 90%;
+		min-width: 50%;
+		max-width: 50%;
 		margin-bottom: 10px;
 	}
 
@@ -172,6 +172,11 @@
 @media screen and (max-width: 550px) {
 	.leftContainer {
 		width: calc(95% - 30px);
+	}
+	.cartCourseImg {
+		min-width: 90%;
+		max-width: 90%;
+		margin-bottom: 10px;
 	}
 
 	.rightContainer {

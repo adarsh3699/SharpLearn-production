@@ -1,21 +1,4 @@
-// import { getAuth } from 'firebase/auth';
-// import { encryptText, decryptText } from '../utils';
-
-import {
-	getFirestore,
-	collection,
-	onSnapshot,
-	getDocs,
-	// addDoc,
-	// deleteDoc,
-	// updateDoc,
-	// doc,
-	query,
-	where,
-	orderBy,
-	limit,
-	// serverTimestamp,
-} from 'firebase/firestore';
+import { getFirestore, collection, onSnapshot, getDocs, query, where, limit } from 'firebase/firestore';
 
 // const auth = getAuth();
 const database = getFirestore();
@@ -48,6 +31,7 @@ function getCourseDetails(courseId, setCourseDetail, setIsGetCourseApiLoading, h
 					});
 					setIsGetCourseApiLoading(false);
 					setCourseDetail(...(allCourses || {}));
+					if (!allCourses.length) return (window.location = '/all_courses');
 				})
 				.catch((err) => {
 					setIsGetCourseApiLoading(false);

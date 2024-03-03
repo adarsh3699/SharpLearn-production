@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-// import { NavLink } from 'react-router-dom';
 import { currentLocalBalance, handleCurentBalance } from '../utils';
 
 import { getCourseDetails, getOtherCourses } from '../firebase/courseDetailsPage.js';
@@ -19,9 +18,14 @@ import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 
 import '../styles/courseDetailsPage.css';
 
+const enrolled_courses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
+
 function CourseDetailsPage() {
 	const [courseId, setCourseId] = useState('');
 	const [courseDetail, setCourseDetail] = useState({});
+	const [isEnrolled, setIsEnrolled] = useState(
+		enrolled_courses.some((course) => course.courseId === window.location.pathname.split('/').pop())
+	);
 	const [othercourses, setOtherCourses] = useState([]);
 	const [msg, setMsg] = useState({ text: '', type: '' });
 	const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
@@ -59,14 +63,15 @@ function CourseDetailsPage() {
 	}, [courseId, handleMsgShown]);
 
 	const handleEnrollBtnClick = useCallback(() => {
-		const enrolled_courses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
+		const enrolledCourses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
 
-		let courseIdExists = enrolled_courses.some((course) => course.courseId === courseId);
+		let courseIdExists = enrolledCourses.some((course) => course.courseId === courseId);
 
 		if (!courseIdExists) {
 			handleCurentBalance(courseDetail?.courseDiscountedPrice, currentBalance, setCurrentBalance);
-			enrolled_courses.push(courseDetail);
-			localStorage.setItem('enrolled_courses', JSON.stringify(enrolled_courses));
+			enrolledCourses.push(courseDetail);
+			localStorage.setItem('enrolled_courses', JSON.stringify(enrolledCourses));
+			setIsEnrolled(true);
 			handleMsgShown('Course Enrolled', 'success');
 		} else {
 			handleMsgShown('Course Already in Enrolled', 'warning');
@@ -129,27 +134,31 @@ function CourseDetailsPage() {
 									% off
 								</span>
 							</div>
-							<Button
-								variant="contained"
-								color="secondary"
-								className="openCourseBtn"
-								sx={{ mt: 3, mr: 2, py: 1.2, px: 2.5 }}
-								startIcon={<ShoppingCartRoundedIcon />}
-								onClick={handleAddToCartBtnClick}
-							>
-								Add to Cart
-							</Button>
+
 							<Button
 								variant="contained"
 								color="warning"
 								className="openCourseBtn"
-								sx={{ mt: 3, py: 1.2, px: 2.5 }}
+								sx={{ mt: 3, mr: 2, py: 1.2, px: 2.5 }}
 								startIcon={<FlashOnRoundedIcon />}
 								// onClick={() => handleMsgShown('This feature is not available now', 'warning')}
 								onClick={handleEnrollBtnClick}
+								disabled={isEnrolled}
 							>
-								Enroll Now
+								{isEnrolled ? 'Enrolled' : 'Enroll Now'}
 							</Button>
+							{!isEnrolled && (
+								<Button
+									variant="contained"
+									color="secondary"
+									className="openCourseBtn"
+									sx={{ mt: 3, py: 1.2, px: 2.5 }}
+									startIcon={<ShoppingCartRoundedIcon />}
+									onClick={handleAddToCartBtnClick}
+								>
+									Add to Cart
+								</Button>
+							)}
 						</div>
 					</div>
 

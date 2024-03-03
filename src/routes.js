@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from 'react';
 import { Routes as Switch, Route } from 'react-router-dom';
 
 import Loader from './components/Loader/Loader';
+import ScroolToTop from './components/ScrollToTop';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const CartPage = lazy(() => import('./pages/CartPage'));
@@ -23,6 +24,7 @@ function Routes() {
 				</div>
 			}
 		>
+			<ScroolToTop />
 			<Switch>
 				<Route
 					exact
