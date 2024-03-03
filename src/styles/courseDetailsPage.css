@@ -114,6 +114,11 @@
 		text-align: center;
 	}
 
+	.courseDetailImage {
+		width: 50%;
+		margin-bottom: 20px;
+	}
+
 	.courseDetailsBoxRight {
 		width: unset;
 	}
@@ -123,6 +128,12 @@
 	}
 
 	.youtubeVideoIframe {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.courseDetailImage {
 		width: 100%;
 	}
 }

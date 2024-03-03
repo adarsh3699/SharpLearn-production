@@ -54,9 +54,18 @@ function HomePage() {
 		window.location.reload();
 	}, []);
 
+	const handleOrderPlaceBtnClick = useCallback(() => {
+		const enrolledCourses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
+
+		allCartCourses.length !== 0 &&
+			localStorage.setItem('enrolled_courses', JSON.stringify(enrolledCourses.concat(allCartCourses)));
+
+		localStorage.removeItem('user_cart');
+		window.location.reload();
+	}, [allCartCourses]);
+
 	return (
 		<div className="cartPage">
-			{/* <NavBar /> */}
 			<Toolbar />
 			<div className="cartPageContainer" component="main">
 				<div className="leftContainer">
@@ -120,7 +129,7 @@ function HomePage() {
 						color="warning"
 						sx={{ my: 3, px: 3, py: 1.5 }}
 						fullWidth
-						onClick={() => handleMsgShown('This Feature is not available yet', 'warning')}
+						onClick={handleOrderPlaceBtnClick}
 					>
 						Place Order
 					</Button>

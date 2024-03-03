@@ -49,7 +49,6 @@ function getAllCartItems(setAllCourses, setIsGetCourseApiLoading, handleMsgShown
 					});
 					setIsGetCourseApiLoading(false);
 					setAllCourses(allCourses);
-					console.log(allCourses);
 					// console.log(allCourses);
 				})
 				.catch((err) => {
