@@ -40,6 +40,17 @@
 	margin-right: 10px;
 }
 
+.phoneMemuBalance {
+	text-align: left;
+	padding: 13.6px 32px;
+	font-size: 20px;
+}
+
+.phoneMemuBalance span {
+	color: #83b5d8;
+	font-weight: 500;
+}
+
 @media screen and (max-width: 699px) {
 	.brandName {
 		font-size: 20px;

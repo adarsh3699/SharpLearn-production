@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 // import { NavLink } from 'react-router-dom';
+import { currentLocalBalance, handleCurentBalance } from '../utils';
 
 import { getCourseDetails, getOtherCourses } from '../firebase/courseDetailsPage.js';
 import Loader from '../components/Loader/Loader.js';
@@ -18,13 +19,14 @@ import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 
 import '../styles/courseDetailsPage.css';
 
-function HomePage() {
+function CourseDetailsPage() {
 	const [courseId, setCourseId] = useState('');
 	const [courseDetail, setCourseDetail] = useState({});
 	const [othercourses, setOtherCourses] = useState([]);
 	const [msg, setMsg] = useState({ text: '', type: '' });
 	const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
 	const [shareBtnTooltip, setShareBtnTooltip] = useState('Click to Copy');
+	const [currentBalance, setCurrentBalance] = useState(currentLocalBalance || 10000);
 
 	const handleMsgShown = useCallback((msgText, type) => {
 		if (msgText) {
@@ -56,6 +58,21 @@ function HomePage() {
 		}
 	}, [courseId, handleMsgShown]);
 
+	const handleEnrollBtnClick = useCallback(() => {
+		const enrolled_courses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
+
+		let courseIdExists = enrolled_courses.some((course) => course.courseId === courseId);
+
+		if (!courseIdExists) {
+			handleCurentBalance(courseDetail?.courseDiscountedPrice, currentBalance, setCurrentBalance);
+			enrolled_courses.push(courseDetail);
+			localStorage.setItem('enrolled_courses', JSON.stringify(enrolled_courses));
+			handleMsgShown('Course Enrolled', 'success');
+		} else {
+			handleMsgShown('Course Already in Enrolled', 'warning');
+		}
+	}, [courseId, courseDetail, currentBalance, handleMsgShown]);
+
 	const handleShareBtnClick = useCallback(() => {
 		navigator.clipboard.writeText(window.location?.href);
 		handleMsgShown('Shearing Link Copied', 'success');
@@ -80,6 +97,10 @@ function HomePage() {
 							/>
 						</div>
 						<div className="courseDetailsBoxRight">
+							<div className="courseDetailsCurrentBalance">
+								Your Current Balance:
+								<span> ₹{currentBalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+							</div>
 							<div className="courseTypeShare">
 								<div className="courseDetailType">{courseDetail?.courseType}</div>
 								<Tooltip
@@ -124,9 +145,10 @@ function HomePage() {
 								className="openCourseBtn"
 								sx={{ mt: 3, py: 1.2, px: 2.5 }}
 								startIcon={<FlashOnRoundedIcon />}
-								onClick={() => handleMsgShown('This feature is not available now', 'warning')}
+								// onClick={() => handleMsgShown('This feature is not available now', 'warning')}
+								onClick={handleEnrollBtnClick}
 							>
-								Buy Now
+								Enroll Now
 							</Button>
 						</div>
 					</div>
@@ -156,4 +178,4 @@ function HomePage() {
 	);
 }
 
-export default HomePage;
+export default CourseDetailsPage;

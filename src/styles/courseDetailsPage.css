@@ -24,6 +24,16 @@
 	width: 50%;
 }
 
+.courseDetailsCurrentBalance {
+	font-size: 30px;
+	margin-bottom: 20px;
+}
+
+.courseDetailsCurrentBalance span {
+	color: #83b5d8;
+	font-weight: 500;
+}
+
 .courseTypeShare {
 	display: flex;
 	justify-content: space-between;

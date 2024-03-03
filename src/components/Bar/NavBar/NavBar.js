@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { currentLocalBalance } from '../../../utils';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,7 +18,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 
 import logoSizeM from '../../../images/logoSizeM.png';
@@ -29,6 +29,7 @@ const drawerWidth = 240;
 function NavBar(props) {
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const currentBalance = currentLocalBalance || 10000;
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -44,17 +45,17 @@ function NavBar(props) {
 			page: '/',
 		},
 		{
-			name: 'Courses',
+			name: 'All Courses',
 			isSelected: false,
 			icon: <MenuBookIcon />,
 			page: '/All_Courses',
 		},
-		{
-			name: 'Contact',
-			isSelected: false,
-			icon: <ContactSupportIcon />,
-			// page: <AboutSettings />,
-		},
+		// {
+		// 	name: 'Contact',
+		// 	isSelected: false,
+		// 	icon: <ContactSupportIcon />,
+		// 	// page: <AboutSettings />,
+		// },
 		{
 			name: 'Cart',
 			isSelected: false,
@@ -94,6 +95,9 @@ function NavBar(props) {
 						</ListItemButton>
 					</NavLink>
 				))}
+				<div className="phoneMemuBalance">
+					Balance <span>₹{currentBalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+				</div>
 			</List>
 		</Box>
 	);
@@ -129,9 +133,8 @@ function NavBar(props) {
 								<Button sx={item.name === 'Cart' ? { ml: 2, color: '#fff' } : { color: '#fff' }}>
 									{item.name === 'Cart' ? (
 										<>
-											{' '}
 											<AddShoppingCartIcon color="primary" fontSize="large" />
-											Cart{' '}
+											Cart
 										</>
 									) : (
 										item.name

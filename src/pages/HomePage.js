@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+// import { NavLink } from 'react-router-dom';
 
-import { getcourses } from '../firebase/homePage.js';
-import Loader from '../components/Loader/Loader.js';
-import ShowMsg from '../components/ShowMsg/ShowMsg.js';
-import CoursesSlider from '../components/OtherCoursesSlider/CoursesSlider.js';
+// import { getcourses } from '../firebase/homePage';
+// import Loader from '../components/Loader/Loader';
+// import ShowMsg from '../components/ShowMsg/ShowMsg';
+// import CoursesSlider from '../components/OtherCoursesSlider/CoursesSlider';
+import EnrolledCourses from '../components/enrolledCourses/EnrolledCourses';
 
 import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import DoneIcon from '@mui/icons-material/Done';
 
 // import photoNotAvailable from '../images/photoNotAvailable.jpeg';
@@ -21,25 +22,29 @@ const keyPoints = [
 	{ title: 'Support', description: '24/7 Student support line.' },
 ];
 
+const currentLocalBalance = localStorage.getItem('current_balance');
+if (!currentLocalBalance && currentLocalBalance !== 0) localStorage.setItem('current_balance', 10000);
+
 function HomePage() {
-	const [msg, setMsg] = useState({ text: '', type: '' });
-	const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
-	const [allCourses, setAllCourses] = useState([]);
+	// const [msg, setMsg] = useState({ text: '', type: '' });
+	// const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
+	// const [allCourses, setAllCourses] = useState([]);
+	const currentBalance = currentLocalBalance || 10000;
 
-	const handleMsgShown = useCallback((msgText, type) => {
-		if (msgText) {
-			setMsg({ text: msgText, type: type });
-			setTimeout(() => {
-				setMsg({ text: '', type: '' });
-			}, 2500);
-		} else {
-			console.log('Please Provide Text Msg');
-		}
-	}, []);
+	// const handleMsgShown = useCallback((msgText, type) => {
+	// 	if (msgText) {
+	// 		setMsg({ text: msgText, type: type });
+	// 		setTimeout(() => {
+	// 			setMsg({ text: '', type: '' });
+	// 		}, 2500);
+	// 	} else {
+	// 		console.log('Please Provide Text Msg');
+	// 	}
+	// }, []);
 
-	useEffect(() => {
-		getcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
-	}, [handleMsgShown]);
+	// useEffect(() => {
+	// 	getcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
+	// }, [handleMsgShown]);
 
 	// const handleAddToCartBtnClick = useCallback(
 	// 	(courseId) => {
@@ -55,16 +60,15 @@ function HomePage() {
 	// 	[handleMsgShown]
 	// );
 
-	const handleCourseClick = useCallback((courseId) => {
-		console.log(courseId);
-		window.open(`/course/${courseId}`, '_blank');
-		// window.location = `/course/${courseId}`;
-	}, []);
+	// const handleCourseClick = useCallback((courseId) => {
+	// 	console.log(courseId);
+	// 	window.open(`/course/${courseId}`, '_blank');
+	// 	// window.location = `/course/${courseId}`;
+	// }, []);
 
 	return (
 		<div className="homePage">
 			<Toolbar />
-
 			<div id="myIntro">
 				<div className="welcome_msg">
 					<p className="line-1 anim-typewriter">
@@ -72,26 +76,29 @@ function HomePage() {
 					</p>
 				</div>
 			</div>
-
-			<div className="homePageaboutSharpLearn">
+			{/* <div className="homePageaboutSharpLearn">
 				Become a certified Software Developer with 100% Practical Learning from Beginner to Advance. Kickstart
 				Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire You! Even if
 				you're a complete beginner with zero knowledge
-			</div>
-
+			</div> */}
 			<div className="homePageSharpLearnIntro">
 				{keyPoints.map((item, index) => (
 					<div className="homePageKeyPoint" key={index}>
 						<DoneIcon sx={{ mr: 1 }} />
 						<div>
-							{' '}
 							<b>{item?.title}:- </b> {item?.description}
 						</div>
 					</div>
 				))}
 			</div>
-			<Loader isLoading={isGetCourseApiLoading} sx={{ marginTop: '20px' }} />
-			{!isGetCourseApiLoading && (
+			<div className="homePageCurrentBalance">
+				Your Current Balance: <span>₹{currentBalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
+			</div>
+
+			{/* <Loader isLoading={isGetCourseApiLoading} sx={{ marginTop: '20px' }} /> */}
+			<EnrolledCourses />
+
+			{/* {!isGetCourseApiLoading && (
 				<>
 					<div className="homePageCoursesTitle">
 						Trending Courses<div className="titleBorder"></div>
@@ -115,8 +122,9 @@ function HomePage() {
 								target="_blank"
 								variant="contained"
 								sx={{ mt: 2, mr: 2 }}
+								color="warning"
 							>
-								Buy Now{' '}
+								Enroll Now
 							</Button>
 							<NavLink to="/All_Courses" className="navLink">
 								<Button variant="contained" sx={{ mt: 2 }}>
@@ -125,16 +133,15 @@ function HomePage() {
 							</NavLink>
 						</div>
 					</div>
-					{/* Other Courses */}
+
 					<div className="homePageCoursesTitle">
 						Other Courses<div className="titleBorder"></div>
 					</div>
 
 					<CoursesSlider allCourses={allCourses} />
 				</>
-			)}
-
-			{msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />}
+			)} */}
+			{/* {msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />} */}
 		</div>
 	);
 }

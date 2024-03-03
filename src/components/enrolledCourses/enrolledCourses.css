@@ -1,0 +1,83 @@
+.enrolledCourseBox {
+	display: flex;
+	padding: 20px 0px;
+	border-bottom: 1px solid hsla(0, 0%, 100%, 0.3);
+}
+
+.enrolledCourseBox:first-of-type {
+	padding-top: 0px;
+}
+
+.enrolledCourseBox:last-of-type {
+	border-bottom: none;
+	margin-bottom: 10rem;
+}
+
+.enrolledCourseImg {
+	min-width: 250px;
+	max-width: 250px;
+	object-fit: cover;
+	aspect-ratio: 1/1;
+	border-radius: 10px;
+}
+
+.enrolledCourseDetailSection {
+	margin: 0 30px;
+	width: 90%;
+}
+
+.enrolledCourseTitle {
+	font-size: 40px;
+	font-weight: bold;
+	cursor: pointer;
+	/* margin-bottom: 10px; */
+}
+
+.enrolledCourseType {
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 20px;
+}
+
+.enrolledAboutCourse {
+	font-size: 20px;
+}
+
+/* ------------M-web----------- */
+@media screen and (max-width: 1000px) {
+	.enrolledCourseBox {
+		display: block;
+		text-align: center;
+	}
+
+	.enrolledCourseTitle {
+		font-size: 35px;
+		margin-bottom: 15px;
+		line-height: 45px;
+	}
+
+	.enrolledCourseDetailSection {
+		margin: auto;
+	}
+
+	.enrolledAboutCourse {
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.enrolledCourseImg {
+		min-width: 90%;
+		max-width: 90%;
+	}
+
+	.enrolledCourseTitle {
+		font-size: 25px;
+		line-height: 30px;
+	}
+
+	.enrolledAboutCourse {
+		font-size: 15px;
+	}
+}

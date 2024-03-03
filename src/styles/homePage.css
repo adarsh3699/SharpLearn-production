@@ -38,6 +38,17 @@
 	color: #f3246f;
 }
 
+.homePageCurrentBalance {
+	font-size: 30px;
+	text-align: right;
+	margin: 20px 0;
+}
+
+.homePageCurrentBalance span {
+	color: #ff6ca2;
+	font-weight: 500;
+}
+
 /*----------------Animation--------------- */
 .anim-typewriter {
 	animation: typewriter 5s steps(30) normal, blinkTextCursor 0.7s ease-in-out infinite;
