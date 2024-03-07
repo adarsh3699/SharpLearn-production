@@ -9,6 +9,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
+import homePageSkeleton from '../../images/homePageSkeleton.svg';
+
 function EnrolledCourses() {
 	const [enrolled_courses, setEnrolled_courses] = useState(
 		JSON.parse(localStorage.getItem('enrolled_courses')) || []
@@ -66,6 +68,12 @@ function EnrolledCourses() {
 					</div>
 				);
 			})}
+			{enrolled_courses.length === 0 && (
+				<div className="noCourseEnrolled">
+					<img src={homePageSkeleton} alt="homePageSkeleton" className="homePageSkeleton" />
+					<div className="noCourseEnrolledText">No Course Enrolled Yet.</div>
+				</div>
+			)}
 		</div>
 	);
 }

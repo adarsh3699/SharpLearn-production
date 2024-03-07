@@ -43,6 +43,14 @@
 	font-size: 20px;
 }
 
+.noCourseEnrolled {
+	font-size: 30px;
+	font-weight: bold;
+	margin: 20px 0;
+	text-align: center;
+	margin: 30px 0 100px 0;
+}
+
 /* ------------M-web----------- */
 @media screen and (max-width: 1000px) {
 	.enrolledCourseBox {

@@ -13,6 +13,7 @@ import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 import cartIsEmpty from '../images/cart-is-empty.png';
 
 import '../styles/cartPage.css';
+import { Login } from '@mui/icons-material';
 
 function HomePage() {
 	const [msg, setMsg] = useState({ text: '', type: '' });
@@ -57,12 +58,32 @@ function HomePage() {
 	const handleOrderPlaceBtnClick = useCallback(() => {
 		const enrolledCourses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
 
-		allCartCourses.length !== 0 &&
-			localStorage.setItem('enrolled_courses', JSON.stringify(enrolledCourses.concat(allCartCourses)));
+		console.log(enrolledCourses);
+		console.log(allCartCourses);
+		const coursesMap = new Map();
 
-		localStorage.removeItem('user_cart');
-		window.location.reload();
-	}, [allCartCourses]);
+		if (allCartCourses.length !== 0) {
+			// Function to add courses to the map, overwriting duplicates
+			const addCourseToMap = (course) => {
+				coursesMap.set(course.courseId, course);
+			};
+
+			// Add courses from allCartCourses to the map
+			allCartCourses.forEach(addCourseToMap);
+
+			// Add enrolled courses to the map
+			enrolledCourses.forEach(addCourseToMap);
+
+			// Convert the Map values back to an array
+			const mergedCourses = Array.from(coursesMap.values());
+			localStorage.setItem('enrolled_courses', JSON.stringify(mergedCourses));
+
+			localStorage.removeItem('user_cart');
+			window.location.reload();
+		} else {
+			handleMsgShown('Please Add Courses to Cart', 'error');
+		}
+	}, [allCartCourses, handleMsgShown]);
 
 	return (
 		<div className="cartPage">
