@@ -1,0 +1,148 @@
+#title {
+	width: 60%;
+	margin: auto;
+	margin-top: 100px;
+	color: #f1f1f1;
+	padding: 8px 0px !important;
+	background-color: #2a2b2d;
+	box-shadow: 0px 16px 32px 0px rgba(18, 18, 18, 0.2);
+	border-radius: 5px;
+	font-size: 23px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+#msgUs {
+	margin: 20px auto;
+	background-color: #2a2b2d;
+	box-shadow: 0px 16px 32px 0px rgba(18, 18, 18, 0.2);
+	border-radius: 5px;
+	padding: 1px;
+	width: 60%;
+	text-align: center;
+}
+
+#email,
+#textArea {
+	margin-top: 18px;
+	padding-left: 5px;
+}
+
+#email {
+	height: 25px;
+	width: 270px;
+	font-size: 15px;
+}
+
+#textArea {
+	padding-top: 5px;
+	margin: 15px 5px;
+	min-width: 500px;
+	max-width: 95%;
+	min-height: 270px;
+}
+
+.disableBtn {
+	background-color: gray !important;
+	pointer-events: none;
+}
+
+#contact {
+	margin: 20px auto;
+	margin-bottom: 40px;
+	background-color: #2a2b2d;
+	box-shadow: 0px 16px 32px 0px rgba(18, 18, 18, 0.2);
+	border-radius: 5px;
+	width: 60%;
+	padding-left: 50px;
+	padding-bottom: 20px;
+}
+
+.subTitle {
+	padding-top: 20px;
+	margin-bottom: 10px;
+	font-size: 25px;
+	color: #f1f1f1;
+	border-bottom: 1px solid #f1f1f1;
+	width: fit-content;
+}
+
+#contact a {
+	display: flex;
+	align-items: center;
+	padding: 7px 0px;
+	width: fit-content;
+}
+
+#contact img {
+	height: 30px;
+}
+
+.socialLinksBox:hover {
+	transform: scale(1.1);
+	transition-duration: 0.2s;
+}
+
+#git {
+	fill: white;
+}
+
+#contact div div {
+	padding-left: 10px;
+}
+
+/*------------------mWebBar-------------------*/
+@media screen and (max-width: 900px) {
+	#title {
+		width: 75%;
+	}
+
+	#msgUs {
+		width: 75%;
+	}
+
+	#contact {
+		width: 75%;
+	}
+
+	#textArea {
+		min-width: 80%;
+		min-height: 270px;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	#title {
+		width: 80%;
+	}
+
+	#msgUs {
+		width: 90%;
+	}
+
+	#textArea {
+		min-width: 70%;
+		min-height: 200px;
+	}
+
+	#contact {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	#email {
+		width: 80%;
+	}
+
+	#textArea {
+		width: unset;
+		min-width: 85%;
+	}
+}
