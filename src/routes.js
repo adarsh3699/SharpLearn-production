@@ -8,6 +8,7 @@ const HomePage = lazy(() => import('./pages/HomePage'));
 const CartPage = lazy(() => import('./pages/CartPage'));
 const CoursePage = lazy(() => import('./pages/AllCoursePage'));
 const CourseDetailsPage = lazy(() => import('./pages/CourseDetailsPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 // const ForgetPasswordPage = lazy(() => import('./pages/ForgetPasswordPage'));
 // const CreateAcc = lazy(() => import('./pages/CreateAcc'));
 // const SettingsPage = lazy(() => import('./pages/SettingsPage'));
@@ -62,7 +63,7 @@ function Routes() {
 						</>
 					}
 				/>
-				{/* <Route exact path="/register" element={<CreateAcc />} /> */}
+				<Route exact path="/contact" element={<ContactPage />} />
 				{/* <Route exact path="/forget-password" element={<ForgetPasswordPage />} /> */}
 				{/* <Route exact path="/settings" element={<SettingsPage />} /> */}
 

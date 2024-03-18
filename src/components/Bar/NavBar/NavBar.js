@@ -60,7 +60,7 @@ function NavBar(props) {
 			name: 'Contact',
 			isSelected: false,
 			icon: <ContactSupportIcon />,
-			page: '/',
+			page: '/contact',
 		},
 		{
 			name: 'Cart',
