@@ -39,55 +39,22 @@ function HomePage() {
 	// 	}
 	// }, []);
 
-	// useEffect(() => {
-	// 	getcourses(setAllCourses, setIsGetCourseApiLoading, handleMsgShown);
-	// }, [handleMsgShown]);
-
-	// const handleAddToCartBtnClick = useCallback(
-	// 	(courseId) => {
-	// 		const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
-	// 		if (!userCart.includes(courseId)) {
-	// 			userCart.push(courseId);
-	// 			localStorage.setItem('user_cart', JSON.stringify(userCart));
-	// 			handleMsgShown('Course Added to Cart', 'success');
-	// 		} else {
-	// 			handleMsgShown('Course Already in Cart', 'warning');
-	// 		}
-	// 	},
-	// 	[handleMsgShown]
-	// );
-
-	// const handleCourseClick = useCallback((courseId) => {
-	// 	console.log(courseId);
-	// 	window.open(`/course/${courseId}`, '_blank');
-	// 	// window.location = `/course/${courseId}`;
-	// }, []);
-
 	return (
 		<div className="homePage">
 			<Toolbar />
-			<div id="myIntro">
-				<div className="welcome_msg">
-					<p className="line-1 anim-typewriter">
-						Learn with <span id="fName">SharpLearn</span>
-					</p>
-				</div>
+			<div className="myIntro">
+				<div className="text1">WelCome To</div>
+				<div className="text2">Employee SharpLearn</div>
+				<div className="text3">platform</div>
+				<p className="text4">
+					A comprehensive program that covers the fundamentals of Low Level to high level design & program.
+					<br /> It includes lectures and practices to help the employees develop and provide them efficient
+					solutions.
+					<br /> This platform is suitable for beginners as well as experienced employees
+					<br /> that aims to skill up their expertise.
+				</p>
 			</div>
-			{/* <div className="homePageaboutSharpLearn">
-				Become a certified Software Developer with 100% Practical Learning from Beginner to Advance. Kickstart
-				Your Career By Working With Top Companies & Government Organizations Who Are Ready To Hire You! Even if
-				you're a complete beginner with zero knowledge
-			</div> */}
-			<div className="homePageSharpLearnIntro">
-				{keyPoints.map((item, index) => (
-					<div className="homePageKeyPoint" key={index}>
-						<DoneIcon sx={{ mr: 1 }} />
-						<div>
-							<b>{item?.title}:- </b> {item?.description}
-						</div>
-					</div>
-				))}
-			</div>
+
 			<div className="homePageCurrentBalance">
 				Your Current Balance: <span>₹{currentBalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
 			</div>
@@ -95,49 +62,6 @@ function HomePage() {
 			{/* <Loader isLoading={isGetCourseApiLoading} sx={{ marginTop: '20px' }} /> */}
 			<EnrolledCourses />
 
-			{/* {!isGetCourseApiLoading && (
-				<>
-					<div className="homePageCoursesTitle">
-						Trending Courses<div className="titleBorder"></div>
-					</div>
-					<div className="homePageTrendingCourses">
-						<img
-							src={allCourses[0]?.courseThumbnail}
-							onClick={() => handleCourseClick(allCourses[0]?.courseId)}
-							className="TrendingCoursesImg"
-							alt=""
-						/>
-						<div className="trendingDetailsBox">
-							<div className="trendingCoursesTitle">{allCourses[0]?.courseName}</div>
-							<div className="trendingCoursesAbout">{allCourses[0]?.aboutCourse}</div>
-							<div className="trendingCoursesPriceSection">
-								<div className="trendingCoursesPrice">Now ₹{allCourses[0]?.courseDiscountedPrice},</div>
-								<div className="trendingCoursesOrgPrice">₹{allCourses[0]?.courseORGPrice}</div>
-							</div>
-							<Button
-								href={'/course/' + allCourses[0]?.courseId}
-								target="_blank"
-								variant="contained"
-								sx={{ mt: 2, mr: 2 }}
-								color="warning"
-							>
-								Enroll Now
-							</Button>
-							<NavLink to="/All_Courses" className="navLink">
-								<Button variant="contained" sx={{ mt: 2 }}>
-									Our Other Courses.
-								</Button>
-							</NavLink>
-						</div>
-					</div>
-
-					<div className="homePageCoursesTitle">
-						Other Courses<div className="titleBorder"></div>
-					</div>
-
-					<CoursesSlider allCourses={allCourses} />
-				</>
-			)} */}
 			{/* {msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />} */}
 		</div>
 	);

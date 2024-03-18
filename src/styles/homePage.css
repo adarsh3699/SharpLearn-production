@@ -3,39 +3,28 @@
 	padding: 0 15px;
 }
 
-/*-----blank page animation-------*/
-#myIntro {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: rgba(32, 30, 30, 0.3);
-	color: #f1f1f1;
-	box-shadow: 0px 16px 32px 0px rgba(18, 18, 18, 0.2);
-	border-radius: 5px;
-	margin: 30px 0 40px 0;
-	padding: 20px;
-	width: 90%;
-	height: 50px;
+.myIntro {
+	margin: 100px;
 }
 
-.line-1 {
-	font-size: 60px;
-	border-right: 2px solid rgba(255, 255, 255, 0.75);
-	white-space: nowrap;
-	overflow: hidden;
+.text1,
+.text3 {
+	font-size: 40px;
+	letter-spacing: 1.5px;
+	font-weight: bold;
+}
+
+.text2 {
+	font-size: 50px;
+	letter-spacing: 1.5px;
+	font-weight: bold;
+	color: rgb(238, 122, 48);
+}
+.text4 {
+	font-size: 18px;
+	letter-spacing: 1.5px;
 	font-weight: 500;
-	text-shadow: 2px 2px 4px #000000;
-	letter-spacing: 2px;
-	width: calc(100% + 5px);
-	transition-duration: 1s;
-}
-
-#fName {
-	color: #5cbbce;
-}
-
-#lName {
-	color: #f3246f;
+	line-height: 40px;
 }
 
 .homePageCurrentBalance {
@@ -47,58 +36,6 @@
 .homePageCurrentBalance span {
 	color: #ff6ca2;
 	font-weight: 500;
-}
-
-/*----------------Animation--------------- */
-.anim-typewriter {
-	animation: typewriter 5s steps(30) normal, blinkTextCursor 0.7s ease-in-out infinite;
-}
-
-@keyframes typewriter {
-	from {
-		width: 0;
-	}
-
-	to {
-		width: calc(100% + 5px);
-	}
-}
-
-@keyframes blinkTextCursor {
-	from {
-		border-right-color: rgba(255, 255, 255, 0.75);
-	}
-
-	to {
-		border-right-color: transparent;
-	}
-}
-
-/*----------------Animation_End--------------- */
-
-.homePageaboutSharpLearn {
-	margin-bottom: 30px;
-	line-height: 25px;
-}
-
-.homePageSharpLearnIntro {
-	padding: 20px;
-	width: calc(100% - 40px);
-	margin: auto;
-	border-radius: 5px;
-	/* background: -webkit-linear-gradient(-45deg, rgba(73, 165, 191, 0.32) 0%, rgb(222, 182, 147) 100%); */
-	background: -webkit-linear-gradient(
-		-45deg,
-		rgba(73, 165, 191, 0.32) 0%,
-		rgba(73, 165, 191, 0.56) 50%,
-		rgb(222, 192, 147) 100%
-	);
-}
-
-.homePageKeyPoint {
-	display: flex;
-	align-items: center;
-	margin-top: 10px;
 }
 
 .homePageCoursesTitle {
@@ -115,30 +52,6 @@
 	margin: 20px 0;
 }
 
-.TrendingCoursesImg {
-	width: 40%;
-	min-height: 200px;
-	border-radius: 10px;
-}
-
-.TrendingCoursesImg:hover {
-	cursor: pointer;
-	transition-duration: 0.5s;
-	transform: scale(1.02);
-	background-color: #0258eb7e;
-}
-
-.trendingDetailsBox {
-	margin-left: 20px;
-}
-
-.trendingCoursesTitle {
-	width: 55;
-	font-size: 30px;
-	font-weight: bold;
-	margin-bottom: 10px;
-}
-
 .titleBorder {
 	background: #0259eb;
 	border-radius: 16px;
@@ -149,38 +62,24 @@
 	width: 48px;
 }
 
-.trendingCoursesAbout {
-	margin-bottom: 10px;
-}
-
-.trendingCoursesPriceSection {
-	display: flex;
-}
-
-.trendingCoursesPrice {
-	font-size: 30px;
-	font-weight: bold;
-	margin-right: 10px;
-}
-
-.trendingCoursesOrgPrice {
-	font-size: 30px;
-	font-weight: bold;
-	margin-right: 10px;
-	text-decoration: line-through;
-	text-decoration-color: red;
-}
-
 /* ------------M-web----------- */
 @media screen and (max-width: 1000px) {
-	#myIntro {
-		width: 85%;
-		height: 40px;
+	.myIntro {
+		margin: 50px;
 	}
 
-	.line-1 {
+	.text1,
+	.text3 {
+		font-size: 30px;
+	}
+
+	.text2 {
 		font-size: 40px;
-		letter-spacing: 1.5px;
+	}
+
+	.text4 {
+		font-size: 15px;
+		line-height: 27px;
 	}
 
 	.homePageSharpLearnIntro {
@@ -207,12 +106,13 @@
 }
 
 @media screen and (max-width: 550px) {
-	#myIntro {
+	.myIntro {
 		margin: 20px 0;
 	}
 
-	.line-1 {
-		font-size: 25px;
+	.text4 {
+		font-size: 15px;
+		line-height: 20px;
 	}
 
 	.homePageaboutSharpLearn {

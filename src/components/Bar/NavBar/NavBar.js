@@ -18,9 +18,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import InfoIcon from '@mui/icons-material/Info';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-
-import logoSizeM from '../../../images/logoSizeM.png';
+import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 
 import './navBar.css';
 
@@ -45,17 +45,23 @@ function NavBar(props) {
 			page: '/',
 		},
 		{
-			name: 'All Courses',
+			name: 'Courses',
 			isSelected: false,
 			icon: <MenuBookIcon />,
 			page: '/All_Courses',
 		},
-		// {
-		// 	name: 'Contact',
-		// 	isSelected: false,
-		// 	icon: <ContactSupportIcon />,
-		// 	// page: <AboutSettings />,
-		// },
+		{
+			name: 'About',
+			isSelected: false,
+			icon: <InfoIcon />,
+			page: '/',
+		},
+		{
+			name: 'Contact',
+			isSelected: false,
+			icon: <ContactSupportIcon />,
+			page: '/',
+		},
 		{
 			name: 'Cart',
 			isSelected: false,
@@ -78,9 +84,7 @@ function NavBar(props) {
 
 	const drawer = (
 		<Box sx={{ textAlign: 'center' }}>
-			<div className="underMenuBrandName">
-				<img src={logoSizeM} height="40px" alt="logo" /> SharpLearn
-			</div>
+			<div className="underMenuBrandName">SharpLearn</div>
 			<Divider />
 			<List className="phoneMenuList">
 				{settingsDrawerMenu.map((item, index) => (
@@ -103,10 +107,10 @@ function NavBar(props) {
 	);
 
 	return (
-		<Box className="navBar" sx={{ display: 'flex' }}>
+		<Box sx={{ display: 'flex' }}>
 			{/* <CssBaseline /> */}
 			<AppBar component="nav">
-				<Toolbar>
+				<Toolbar className="navBar">
 					<IconButton
 						color="inherit"
 						aria-label="open drawer"
@@ -117,32 +121,26 @@ function NavBar(props) {
 						<MenuIcon />
 					</IconButton>
 
-					<div className="brandName">
-						<img src={logoSizeM} alt="logo" /> <NavLink to="/"> SharpLearn</NavLink>
-					</div>
+					<NavLink to="/" className="brandName">
+						SharpLearn
+					</NavLink>
 
+					<Box className="otherMenus" sx={{ display: { xs: 'none', sm: 'flex' } }}>
+						{settingsDrawerMenu.map((item, index) => (
+							<NavLink to={item?.page} key={index} className="otherMenusBtn">
+								<Button sx={{ color: '#fff' }}>{item.name}</Button>
+							</NavLink>
+						))}
+					</Box>
+					<form className="searchBar">
+						<input type="text" placeholder="Search for courses" />
+						<button type="submit">Search</button>
+					</form>
 					<NavLink to="/cart" className="phoneCartBtn">
 						<Button sx={{ color: '#fff', display: { xs: 'flex', sm: 'none' } }}>
 							<AddShoppingCartIcon color="primary" fontSize="medium" /> Cart
 						</Button>
 					</NavLink>
-
-					<Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-						{settingsDrawerMenu.map((item, index) => (
-							<NavLink to={item?.page} key={index}>
-								<Button sx={item.name === 'Cart' ? { ml: 2, color: '#fff' } : { color: '#fff' }}>
-									{item.name === 'Cart' ? (
-										<>
-											<AddShoppingCartIcon color="primary" fontSize="large" />
-											Cart
-										</>
-									) : (
-										item.name
-									)}
-								</Button>
-							</NavLink>
-						))}
-					</Box>
 				</Toolbar>
 			</AppBar>
 
