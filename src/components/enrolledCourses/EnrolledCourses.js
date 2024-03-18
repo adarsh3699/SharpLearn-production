@@ -46,6 +46,7 @@ function EnrolledCourses() {
 							className="enrolledCourseImg"
 							src={item?.courseThumbnail || photoNotAvailable}
 							loading="lazy"
+							onClick={() => handleCourseClick(item?.courseId)}
 							alt=""
 						/>
 						<div className="enrolledCourseDetailSection">

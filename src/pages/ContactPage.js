@@ -9,13 +9,9 @@ import instaIconImg from '../images/soical_logos/instagram.svg';
 import linkedinLogoImg from '../images/soical_logos/linkedinLogo.svg';
 import youtubeIconImg from '../images/soical_logos/youtube.svg';
 
-document.title = 'Adarsh Suman | Contact';
-
 function AboutPage() {
 	const [emailValue, setEmailValue] = useState('');
 	const [msgValue, setMsgValue] = useState('');
-
-	if (document.title !== 'Adarsh Suman | Contact') document.title = 'Adarsh Suman | Contact';
 
 	function handelEmailChange(e) {
 		const value = e.target.value;
