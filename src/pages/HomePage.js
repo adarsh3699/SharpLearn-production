@@ -9,18 +9,10 @@ import EnrolledCourses from '../components/enrolledCourses/EnrolledCourses';
 
 import Toolbar from '@mui/material/Toolbar';
 // import Button from '@mui/material/Button';
-import DoneIcon from '@mui/icons-material/Done';
 
 // import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 
 import '../styles/homePage.css';
-
-const keyPoints = [
-	{ title: 'Self-Paced', description: 'Watch Anytime, Anywhere Unlimited Video Playbacks for lifetime.' },
-	{ title: 'Unlimited', description: ' Lifetime access of course.' },
-	{ title: 'Language', description: 'Indian English and Hindi.' },
-	{ title: 'Support', description: '24/7 Student support line.' },
-];
 
 function HomePage() {
 	// const [msg, setMsg] = useState({ text: '', type: '' });

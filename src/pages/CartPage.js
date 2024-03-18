@@ -13,7 +13,6 @@ import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 import cartIsEmpty from '../images/cart-is-empty.png';
 
 import '../styles/cartPage.css';
-import { Login } from '@mui/icons-material';
 
 function HomePage() {
 	const [msg, setMsg] = useState({ text: '', type: '' });
