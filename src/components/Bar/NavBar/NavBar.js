@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { currentLocalBalance } from '../../../utils';
+// import { handleUserState } from '../../../firebase/auth';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -18,6 +19,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import HomeIcon from '@mui/icons-material/Home';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
+import LoginIcon from '@mui/icons-material/Login';
 import InfoIcon from '@mui/icons-material/Info';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import ContactSupportIcon from '@mui/icons-material/ContactSupport';
@@ -25,6 +27,8 @@ import ContactSupportIcon from '@mui/icons-material/ContactSupport';
 import './navBar.css';
 
 const drawerWidth = 240;
+
+const user_details = JSON.parse(localStorage.getItem('user_details'));
 
 function NavBar(props) {
 	const { window } = props;
@@ -37,38 +41,79 @@ function NavBar(props) {
 		setMobileOpen((prevState) => !prevState);
 	}, []);
 
-	const [settingsDrawerMenu, setSettingsDrawerMenu] = useState([
-		{
-			name: 'Home',
-			isSelected: true,
-			icon: <HomeIcon />,
-			page: '/',
-		},
-		{
-			name: 'Courses',
-			isSelected: false,
-			icon: <MenuBookIcon />,
-			page: '/All_Courses',
-		},
-		{
-			name: 'About',
-			isSelected: false,
-			icon: <InfoIcon />,
-			page: '/',
-		},
-		{
-			name: 'Contact',
-			isSelected: false,
-			icon: <ContactSupportIcon />,
-			page: '/contact',
-		},
-		{
-			name: 'Cart',
-			isSelected: false,
-			icon: <ShoppingCartOutlinedIcon />,
-			page: '/cart',
-		},
-	]);
+	const [settingsDrawerMenu, setSettingsDrawerMenu] = useState(
+		user_details
+			? [
+					{
+						name: 'Home',
+						isSelected: true,
+						icon: <HomeIcon />,
+						page: '/',
+					},
+					{
+						name: 'Courses',
+						isSelected: false,
+						icon: <MenuBookIcon />,
+						page: '/All_Courses',
+					},
+					{
+						name: 'About',
+						isSelected: false,
+						icon: <InfoIcon />,
+						page: '/about',
+					},
+					{
+						name: 'Contact',
+						isSelected: false,
+						icon: <ContactSupportIcon />,
+						page: '/contact',
+					},
+					{
+						name: 'Cart',
+						isSelected: false,
+						icon: <ShoppingCartOutlinedIcon />,
+						page: '/cart',
+					},
+			  ]
+			: [
+					{
+						name: 'Home',
+						isSelected: true,
+						icon: <HomeIcon />,
+						page: '/',
+					},
+					{
+						name: 'Courses',
+						isSelected: false,
+						icon: <MenuBookIcon />,
+						page: '/All_Courses',
+					},
+					{
+						name: 'About',
+						isSelected: false,
+						icon: <InfoIcon />,
+						page: '/about',
+					},
+					{
+						name: 'Contact',
+						isSelected: false,
+						icon: <ContactSupportIcon />,
+						page: '/contact',
+					},
+					{
+						name: 'Cart',
+						isSelected: false,
+						icon: <ShoppingCartOutlinedIcon />,
+						page: '/cart',
+					},
+					{
+						name: 'Login',
+						isSelected: false,
+						icon: <LoginIcon />,
+						page: '/login',
+					},
+			  ]
+	);
 
 	const handleSelectedMenu = useCallback(
 		(index) => {

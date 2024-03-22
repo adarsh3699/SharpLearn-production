@@ -17,8 +17,6 @@
 }
 
 .underMenuBrandName {
-	align-items: center;
-	justify-content: flex-start;
 	margin: 16px 0;
 	font-size: 20px;
 	font-weight: 500;
@@ -26,17 +24,15 @@
 }
 
 .otherMenus {
-	display: flex;
-	align-items: center;
-	justify-content: center;
 	flex-grow: 1;
+	justify-content: space-around;
 	font-size: 20px;
 	font-weight: 500;
 	color: rgb(238, 122, 48);
 }
 
 .otherMenusBtn {
-	margin: 0 3%;
+	/* margin: 0 3%; */
 }
 
 .phoneMemuBalance {

@@ -1,0 +1,182 @@
+.loginPage {
+	min-height: 100vh;
+	padding: 100px;
+	display: flex;
+	justify-content: center;
+}
+
+.loginPageIntro {
+	/* margin: 100px; */
+	margin-right: 20px;
+}
+
+.text1,
+.text3 {
+	font-size: 45px;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+.text2 {
+	font-size: 55px;
+	letter-spacing: 2px;
+	font-weight: bold;
+	color: rgb(238, 122, 48);
+}
+.text4 {
+	font-size: 16px;
+	letter-spacing: 1.5px;
+	font-weight: 500;
+	line-height: 40px;
+}
+
+/* .............Right........... */
+.loginWapper {
+	display: flex;
+	/* justify-content: center; */
+	align-items: center;
+	flex-direction: column;
+	height: 550px;
+	min-width: 350px;
+	max-width: 30%;
+
+	background-color: rgb(25, 25, 25);
+	border-radius: 10px;
+	flex: 1;
+	box-sizing: border-box;
+	transform-style: preserve-3d;
+	transition: transform 0.8s ease-in-out;
+	perspective: 1000px;
+}
+
+.loginForm {
+	padding: 20px;
+	/* min-width: 310px; */
+
+	text-align: center;
+	position: absolute;
+	backface-visibility: hidden;
+}
+
+.signupForm {
+	padding: 20px;
+	/* min-width: 310px; */
+
+	text-align: center;
+	position: absolute;
+	backface-visibility: hidden;
+	transform: rotateY(180deg);
+}
+
+.loginWapper:hover {
+	/* transform: rotateY(180deg); */
+}
+
+.loginWapperTitle {
+	font-size: 30px;
+	font-weight: bold;
+	width: 100%;
+	margin: 20px 0 40px 0;
+	background-color: white;
+	color: rgb(238, 122, 48);
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 10px;
+}
+
+.autoInput {
+	background-color: unset;
+	border: none;
+	outline: none;
+	width: 100%;
+	color: white;
+	font-size: 18px;
+	border-bottom: 1px solid rgb(238, 122, 48);
+	margin-bottom: 30px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+.autoInput::placeholder {
+	color: rgb(206, 206, 206);
+}
+
+.showPassContainer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	width: 100%;
+	margin-bottom: 30px;
+	user-select: none;
+}
+
+.authMSG {
+	color: red;
+	font-size: 15px;
+	font-weight: 500;
+	margin-top: -20px;
+	margin-bottom: 20px;
+}
+
+.loginBtn {
+	background-color: rgb(238, 122, 48);
+	color: black;
+	width: 100%;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 10px 0;
+	border: none;
+	border-radius: 10px;
+	cursor: pointer;
+	margin-bottom: 20px;
+}
+
+.loginBtnLoading {
+	background-color: rgb(182, 91, 34);
+}
+
+.createAccbtn {
+	text-align: center;
+	color: rgb(238, 122, 48);
+	width: 100%;
+	font-size: 20px;
+	font-weight: 500;
+	margin-bottom: 50px;
+	text-decoration: unset;
+}
+
+.createAccbtn:hover {
+	text-decoration: underline;
+}
+
+/* ------------M-web----------- */
+@media screen and (max-width: 1000px) {
+	.loginPageIntro {
+		margin: 50px;
+	}
+
+	.text1,
+	.text3 {
+		font-size: 30px;
+	}
+
+	.text2 {
+		font-size: 40px;
+	}
+
+	.text4 {
+		font-size: 15px;
+		line-height: 27px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.loginPageIntro {
+		margin: 20px 0;
+	}
+
+	.text4 {
+		font-size: 15px;
+		line-height: 20px;
+	}
+}

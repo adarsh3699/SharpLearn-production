@@ -1,16 +1,9 @@
 import React from 'react';
 // import { NavLink } from 'react-router-dom';
 
-// import { getcourses } from '../firebase/homePage';
-// import Loader from '../components/Loader/Loader';
-// import ShowMsg from '../components/ShowMsg/ShowMsg';
-// import CoursesSlider from '../components/OtherCoursesSlider/CoursesSlider';
 import EnrolledCourses from '../components/enrolledCourses/EnrolledCourses';
 
 import Toolbar from '@mui/material/Toolbar';
-// import Button from '@mui/material/Button';
-
-// import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 
 import '../styles/homePage.css';
 

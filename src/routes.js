@@ -9,8 +9,10 @@ const CartPage = lazy(() => import('./pages/CartPage'));
 const CoursePage = lazy(() => import('./pages/AllCoursePage'));
 const CourseDetailsPage = lazy(() => import('./pages/CourseDetailsPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
-// const ForgetPasswordPage = lazy(() => import('./pages/ForgetPasswordPage'));
-// const CreateAcc = lazy(() => import('./pages/CreateAcc'));
+const LoginPage = lazy(() => import('./pages/LoginPage'));
+const ForgetPasswordPage = lazy(() => import('./pages/ForgetPasswordPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+// const CreateAcc = lazy(() => import('./pages/CreateAccPage'))
 // const SettingsPage = lazy(() => import('./pages/SettingsPage'));
 
 function Routes() {
@@ -20,51 +22,22 @@ function Routes() {
 				<div className="background">
 					<div id="loadingScreen">
 						<div> Loading </div>
-						<Loader />
+						<Loader isLoading={true} />
 					</div>
 				</div>
 			}
 		>
 			<ScroolToTop />
 			<Switch>
-				<Route
-					exact
-					path="/"
-					element={
-						<>
-							<HomePage />
-						</>
-					}
-				/>
-				<Route
-					exact
-					path="/All_Courses"
-					element={
-						<>
-							<CoursePage />
-						</>
-					}
-				/>
-				<Route
-					exact
-					path="/cart"
-					element={
-						<>
-							<CartPage />
-						</>
-					}
-				/>
-				<Route
-					exact
-					path="/course/*"
-					element={
-						<>
-							<CourseDetailsPage />
-						</>
-					}
-				/>
+				<Route exact path="/" element={<HomePage />} />
+				<Route exact path="/All_Courses" element={<CoursePage />} />
+				<Route exact path="/cart" element={<CartPage />} />
+				<Route exact path="/course/*" element={<CourseDetailsPage />} />
+				<Route exact path="/about" element={<AboutPage />} />
 				<Route exact path="/contact" element={<ContactPage />} />
-				{/* <Route exact path="/forget-password" element={<ForgetPasswordPage />} /> */}
+				<Route exact path="/login" element={<LoginPage />} />
+				<Route exact path="/forget-password" element={<ForgetPasswordPage />} />
+				{/* <Route exact path="/create-account" element={<CreateAcc />} /> */}
 				{/* <Route exact path="/settings" element={<SettingsPage />} /> */}
 
 				<Route

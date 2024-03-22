@@ -6,4 +6,11 @@ function handleCurentBalance(cost, currentBalance, setCurrentBalance) {
 	localStorage.setItem('current_balance', localStorage.getItem('current_balance') - cost);
 }
 
+// function isUserLoggedIn() {
+// 	const ka = !!JSON.parse(localStorage.getItem('user_details'));
+// 	console.log(ka);
+// }
+
+// isUserLoggedIn();
+
 export { currentLocalBalance, handleCurentBalance };
