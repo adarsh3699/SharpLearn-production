@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { handleSignOut } from '../../../firebase/auth';
 
 import logoImg from '../../../images/logoSizeM.png';
 // import googleImg from './img/google.png';
@@ -24,6 +25,9 @@ function FootBar() {
 						<NavLink to="/about">About</NavLink>
 						<NavLink to="/contact">Contact</NavLink>
 						<NavLink to="/cart">Cart</NavLink>
+						<NavLink to="/login" onClick={handleSignOut}>
+							Logout
+						</NavLink>
 					</div>
 					<div className="footerLogoContainer">
 						<img className="footerLogo" src={logoImg} alt="" />
@@ -49,6 +53,9 @@ function FootBar() {
 					<NavLink to="/about">About</NavLink>
 					<NavLink to="/contact">Contact</NavLink>
 					<NavLink to="/cart">Cart</NavLink>
+					<NavLink to="/login" onClick={handleSignOut}>
+						Logout
+					</NavLink>
 				</div>
 				<div className="footerLogoContainer">
 					<img className="footerLogo" src={logoImg} alt="" />
