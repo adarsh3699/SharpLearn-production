@@ -31,6 +31,11 @@
 }
 
 /* .............Right........... */
+.mobileForm {
+	display: none !important;
+	margin-bottom: 50px;
+}
+
 .loginWapper {
 	display: flex;
 	/* justify-content: center; */
@@ -150,6 +155,22 @@
 }
 
 /* ------------M-web----------- */
+@media screen and (max-width: 1300px) {
+	.loginPage {
+		display: block;
+		padding: 50px;
+	}
+	.mobileForm {
+		display: flex !important;
+		width: 100% !important;
+		min-width: unset;
+		max-width: unset;
+	}
+
+	.loginWapper {
+		display: none;
+	}
+}
 @media screen and (max-width: 1000px) {
 	.loginPageIntro {
 		margin: 50px;
@@ -171,6 +192,9 @@
 }
 
 @media screen and (max-width: 550px) {
+	.loginPage {
+		padding: 20px;
+	}
 	.loginPageIntro {
 		margin: 20px 0;
 	}
