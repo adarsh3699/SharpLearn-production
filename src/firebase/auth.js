@@ -134,7 +134,7 @@ function handleUserState(currentPage, setIsLoading) {
 			// document.location.href = '/login';
 			setIsLoading(false);
 		} else if (currentPage === 'loginPage' && user === null) {
-			localStorage.clear();
+			// localStorage.clear();
 			setIsLoading(false);
 		}
 		// return !!user;

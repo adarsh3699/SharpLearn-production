@@ -56,9 +56,9 @@ function HomePage() {
 
 	const handleOrderPlaceBtnClick = useCallback(() => {
 		const enrolledCourses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
+		const user_details = JSON.parse(localStorage.getItem('user_details'));
 
-		console.log(enrolledCourses);
-		console.log(allCartCourses);
+		if (!user_details) return handleMsgShown('Please Login to Place Order', 'error');
 		const coursesMap = new Map();
 
 		if (allCartCourses.length !== 0) {

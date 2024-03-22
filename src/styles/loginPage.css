@@ -155,7 +155,7 @@
 }
 
 /* ------------M-web----------- */
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1200px) {
 	.loginPage {
 		display: block;
 		padding: 50px;
