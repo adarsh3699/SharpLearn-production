@@ -64,6 +64,9 @@ function CourseDetailsPage() {
 
 	const handleEnrollBtnClick = useCallback(() => {
 		const enrolledCourses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
+		const user_details = JSON.parse(localStorage.getItem('user_details'));
+
+		if (!user_details) return handleMsgShown('Please Login to Place an Order', 'error');
 
 		let courseIdExists = enrolledCourses.some((course) => course.courseId === courseId);
 
