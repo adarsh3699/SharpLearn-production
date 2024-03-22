@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import { handleForgetPassword } from '../firebase/auth';
 import Loader from '../components/Loader/Loader';
+import { Toolbar } from '@mui/material';
 
 import '../styles/loginPage.css';
 
@@ -21,20 +22,21 @@ function ForgetPasswordPage() {
 	}, []);
 
 	return (
-		<div id="ForgetPasswordPage">
-			<div id="wrapper">
-				<div id="Title">Forget Password</div>
+		<div className="ForgetPasswordPage">
+			<Toolbar />
+			<div className="wrapper">
+				<div className="loginWapperTitle">Forget Password</div>
 				<form className="form" onSubmit={handleForgetPasswordSubmit}>
 					<input
 						type="email"
 						name="email"
-						className="inputBottomMargin"
+						className="autoInput"
 						placeholder="Email"
 						required
 						onChange={handleMsgHideOnKeyUp}
 					/>
 
-					<button id="createAcc" style={{ marginTop: 'unset' }}>
+					<button className="loginBtn" style={{ marginTop: 'unset' }}>
 						Send Link
 					</button>
 
@@ -43,7 +45,7 @@ function ForgetPasswordPage() {
 					<br />
 				</form>
 
-				<NavLink to="/" id="forgotPass">
+				<NavLink to="/" className="createAccbtn">
 					Back to Login Page
 				</NavLink>
 			</div>

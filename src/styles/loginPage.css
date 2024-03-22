@@ -1,4 +1,5 @@
-.loginPage {
+.loginPage,
+.ForgetPasswordPage {
 	min-height: 100vh;
 	padding: 100px;
 	display: flex;
@@ -71,10 +72,6 @@
 	position: absolute;
 	backface-visibility: hidden;
 	transform: rotateY(180deg);
-}
-
-.loginWapper:hover {
-	/* transform: rotateY(180deg); */
 }
 
 .loginWapperTitle {
