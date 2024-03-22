@@ -1,10 +1,12 @@
 import React from 'react';
+import Toolbar from '@mui/material/Toolbar';
 
 import '../styles/aboutPage.css';
 
 function AboutPage() {
 	return (
 		<div className="aboutPage">
+			<Toolbar />
 			<p className="aboutPara">
 				Employee skill hub platform is a digital tool or system designed to facilitate the learning and
 				development of employees within an organization. The hub is a comprehensive program that covers the

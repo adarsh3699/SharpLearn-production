@@ -11,7 +11,7 @@ function HomePage() {
 	// const [msg, setMsg] = useState({ text: '', type: '' });
 	// const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
 	// const [allCourses, setAllCourses] = useState([]);
-	const currentBalance = localStorage.getItem('current_balance') || 10000;
+	// const currentBalance = localStorage.getItem('current_balance') || 10000;
 
 	// const handleMsgShown = useCallback((msgText, type) => {
 	// 	if (msgText) {
@@ -40,9 +40,9 @@ function HomePage() {
 				</p>
 			</div>
 
-			<div className="homePageCurrentBalance">
+			{/* <div className="homePageCurrentBalance">
 				Your Current Balance: <span>₹{currentBalance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</span>
-			</div>
+			</div> */}
 
 			{/* <Loader isLoading={isGetCourseApiLoading} sx={{ marginTop: '20px' }} /> */}
 			<EnrolledCourses />

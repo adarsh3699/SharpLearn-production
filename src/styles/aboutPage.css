@@ -1,10 +1,22 @@
 .aboutPage {
 	height: 100vh;
-	padding: 100px;
+	padding: 50px 100px;
 }
 
 .aboutPara {
 	font-size: 1rem;
-	margin-top: 30px;
+	margin-bottom: 30px;
 	line-height: 25px;
+}
+
+@media screen and (max-width: 1000px) {
+	.aboutPage {
+		padding: 25px 50px;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.aboutPage {
+		padding: 0 20px;
+	}
 }
