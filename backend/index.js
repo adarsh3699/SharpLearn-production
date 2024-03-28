@@ -66,7 +66,6 @@ const PORT = process.env.PORT || 4000;
 
 app.get("/", function (req, res) {
   res.send("Hello World");
-  console.log(process.env.MONGO_DB_URI);
 });
 mongoose.set("strictQuery", false);
 mongoose
