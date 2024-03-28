@@ -64,7 +64,7 @@ app.get('/', function (req, res) {
 
 mongoose.set('strictQuery', false);
 mongoose
-	.connect('mongodb://localhost/sharplearn')
+	.connect('mongodb+srv://adarsh3699:adarsh123@cluster1.neekomj.mongodb.net/')
 	.then(() =>
 		app.listen(PORT, () => {
 			console.log(`Server is running at port ${PORT}`);
