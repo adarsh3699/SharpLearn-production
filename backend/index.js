@@ -12,11 +12,6 @@ app.use(cors(allowlist));
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// function getMongoDb() {
-// 	return 'mongodb://localhost/sharplearn';
-// 	// return process.env.MONGO_DB_URI;
-// }
-
 app.get('/set_share', async (req, res) => {
 	try {
 		const userId = req.query.id;
