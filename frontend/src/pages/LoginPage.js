@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { handleUserState, handleLoginForm, handleSignUpForm } from '../firebase/auth';
 import Loader from '../components/Loader/Loader';
 
@@ -12,6 +13,7 @@ function LoginPage() {
 	const [isApiLoading, setIsApiLoading] = useState(false);
 	const [ispasswordVisible, setIspasswordVisible] = useState(false);
 	const [isSignupWapper, setIsSignupWapper] = useState(false);
+	let [searchParams, setSearchParams] = useSearchParams();
 
 	useEffect(() => {
 		handleUserState('loginPage', setIsLoading);
@@ -30,9 +32,13 @@ function LoginPage() {
 		handleLoginForm(e, setMsg, setIsApiLoading);
 	}, []);
 
-	const handleUserSignUpForm = useCallback((e) => {
-		handleSignUpForm(e, setMsg, setIsApiLoading);
-	}, []);
+	const handleUserSignUpForm = useCallback(
+		(e) => {
+			const referralCode = searchParams.get('referral');
+			handleSignUpForm(e, setMsg, setIsApiLoading, referralCode);
+		},
+		[searchParams]
+	);
 
 	const handleMsgHideOnKeyUp = useCallback((e) => {
 		setMsg('');
@@ -170,8 +176,8 @@ function LoginPage() {
 								onKeyDown={handleMsgHideOnKeyUp}
 							/>
 							<div className="showPassContainer">
-								<input id="showPass" type="checkbox" onClick={handlePasswordVisibility} />
-								<label htmlFor="showPass">Show password</label>
+								<input id="showPass2" type="checkbox" onClick={handlePasswordVisibility} />
+								<label htmlFor="showPass2">Show password</label>
 							</div>
 							<div className="authMSG">{msg}</div>
 							<button
@@ -237,63 +243,6 @@ function LoginPage() {
 							</div>
 						</form>
 					</div>
-					{/* <div id="wrapper">
-						<img id="myLogo" src={logologoSizeL} alt="" />
-						<div id="Title">SharpLearn</div>
-						<form className="form" onSubmit={handleUserLogin}>
-							<input
-								type="email"
-								name="email"
-								placeholder="Email"
-								disabled={isApiLoading}
-								className="inputBottomMargin"
-								onKeyDown={handleMsgHideOnKeyUp}
-							/>
-							<input
-								type={ispasswordVisible ? 'text' : 'password'}
-								name="password"
-								placeholder="Password"
-								disabled={isApiLoading}
-								className=""
-								onKeyDown={handleMsgHideOnKeyUp}
-							/>
-
-							<div id="showPassword">
-								<FormControlLabel
-									control={
-										<Checkbox
-											onClick={handlePasswordVisibility}
-											sx={{
-												color: amber[400],
-												'&.Mui-checked': {
-													color: amber[600],
-												},
-											}}
-										/>
-									}
-									label="Show password"
-								/>
-							</div>
-
-							<button id="login" className={isApiLoading ? 'isLogin' : ''}>
-								Login
-							</button>
-						</form>
-
-						<div id="msg" className="red" style={isApiLoading ? { marginBottom: '0px' } : {}}>
-							{' '}
-							{msg}{' '}
-						</div>
-						<Loader isLoading={isApiLoading} />
-						<NavLink to="/forget-password" id="forgotPass">
-							Forgotten Password
-						</NavLink>
-
-						<hr />
-						<NavLink to="/register">
-							<div id="createAcc">Create New Account</div>
-						</NavLink>
-					</div> */}
 				</div>
 			) : (
 				<div className="background">

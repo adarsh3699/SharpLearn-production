@@ -62,6 +62,15 @@
 	width: 48px;
 }
 
+.shareBox {
+	margin: 20px;
+}
+
+.shareTitle {
+	font-size: 20px;
+	font-weight: 500;
+}
+
 /* ------------M-web----------- */
 @media screen and (max-width: 1000px) {
 	.myIntro {

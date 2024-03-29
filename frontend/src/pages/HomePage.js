@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { apiCall } from '../utils';
 // import { NavLink } from 'react-router-dom';
 
 import EnrolledCourses from '../components/enrolledCourses/EnrolledCourses';
@@ -10,7 +11,8 @@ import '../styles/homePage.css';
 function HomePage() {
 	// const [msg, setMsg] = useState({ text: '', type: '' });
 	// const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
-	// const [allCourses, setAllCourses] = useState([]);
+	const [allshares, setAllshares] = useState([]);
+	const [shareCount, setShareCount] = useState(0);
 	// const currentBalance = localStorage.getItem('current_balance') || 10000;
 
 	// const handleMsgShown = useCallback((msgText, type) => {
@@ -24,6 +26,15 @@ function HomePage() {
 	// 	}
 	// }, []);
 
+	useEffect(() => {
+		const userId = JSON.parse(localStorage.getItem('user_details')).userId;
+		apiCall('get_all/?id=' + userId).then((response) => {
+			console.log(response);
+			setAllshares(response.data?.referralDetails);
+			setShareCount(response.data?.referralCount);
+		});
+	}, []);
+	console.log(allshares);
 	return (
 		<div className="homePage">
 			<Toolbar />
@@ -46,6 +57,23 @@ function HomePage() {
 
 			{/* <Loader isLoading={isGetCourseApiLoading} sx={{ marginTop: '20px' }} /> */}
 			<EnrolledCourses />
+
+			<div className="homePageCoursesTitle">
+				All Shares: {shareCount}
+				<div className="titleBorder"></div>
+			</div>
+
+			<div className="allShares">
+				{allshares.map((item, index) => {
+					return (
+						<div className="shareBox" key={index}>
+							<div className="shareDetailSection">
+								<div className="shareTitle">Name: {item?.userName}</div>
+							</div>
+						</div>
+					);
+				})}
+			</div>
 
 			{/* {msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />} */}
 		</div>

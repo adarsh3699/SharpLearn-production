@@ -9,6 +9,8 @@ import {
 	sendPasswordResetEmail,
 } from 'firebase/auth';
 
+import { apiCall } from '../utils';
+
 const auth = getAuth();
 
 const user_details = JSON.parse(localStorage.getItem('user_details'));
@@ -41,7 +43,7 @@ function handleLoginForm(e, setMsg, setIsApiLoading) {
 		});
 }
 
-function handleSignUpForm(e, setMsg, setIsApiLoading) {
+function handleSignUpForm(e, setMsg, setIsApiLoading, referralCode) {
 	e.preventDefault();
 	const userName = e.target.userName?.value;
 	const email = e.target.email?.value;
@@ -58,10 +60,8 @@ function handleSignUpForm(e, setMsg, setIsApiLoading) {
 			sendEmailVerification(cred.user).then(() => {
 				// setMsg('Email verification sent. Please also check in spam');
 			});
-
-			updateProfile(cred.user, { displayName: userName })
-				.then(() => {
-					setIsApiLoading(false);
+			if (!referralCode) {
+				apiCall(`set_share/?id=${cred?.user?.uid}`).then(async (response) => {
 					localStorage.setItem(
 						'user_details',
 						JSON.stringify({
@@ -70,15 +70,34 @@ function handleSignUpForm(e, setMsg, setIsApiLoading) {
 							userId: cred?.user?.uid,
 						})
 					);
-					document.location.href = '/home';
-				})
+					document.location.href = '/';
+				});
+			} else {
+				apiCall(`referral/?id=${referralCode}`, 'POST', {
+					referralDetails: { userName, email, userId: cred?.user?.uid },
+				}).then(async (response) => {
+					localStorage.setItem(
+						'user_details',
+						JSON.stringify({
+							userName,
+							email,
+							userId: cred?.user?.uid,
+						})
+					);
+					document.location.href = '/';
+				});
+			}
+
+			updateProfile(cred.user, { displayName: userName })
+				.then(() => {})
 				.catch((err) => {
-					setIsApiLoading(false);
 					setMsg(err.code);
 				});
 		})
 		.catch((err) => {
 			setMsg(err.code);
+		})
+		.finally(() => {
 			setIsApiLoading(false);
 		});
 }
@@ -116,8 +135,9 @@ function handleForgetPassword(e, setMsg, setIsOTPApiLoading) {
 
 function handleUserState(currentPage, setIsLoading) {
 	if (!currentPage) return console.log('Missing currentPage');
-
+	console.log(user_details);
 	onAuthStateChanged(auth, (user) => {
+		console.log(user);
 		if (user && !user_details) {
 			localStorage.setItem(
 				'user_details',
@@ -127,14 +147,16 @@ function handleUserState(currentPage, setIsLoading) {
 					userId: user?.uid,
 				})
 			);
+			// .then((document.location.href = '/'));
 		}
-		if (currentPage === 'loginPage' && user !== null) {
+		if (currentPage === 'loginPage' && user_details && user) {
 			document.location.href = '/';
 		} else if (currentPage !== 'loginPage' && user === null) {
 			// document.location.href = '/login';
 			setIsLoading(false);
-		} else if (currentPage === 'loginPage' && user === null) {
-			// localStorage.clear();
+		}
+		if (currentPage === 'loginPage' && user === null) {
+			localStorage.clear();
 			setIsLoading(false);
 		}
 		// return !!user;

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+
 import { currentLocalBalance, handleCurentBalance } from '../utils';
 
 import { getCourseDetails, getOtherCourses } from '../firebase/courseDetailsPage.js';
@@ -19,6 +20,7 @@ import photoNotAvailable from '../images/photoNotAvailable.jpeg';
 import '../styles/courseDetailsPage.css';
 
 const enrolled_courses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
+const user_details = JSON.parse(localStorage.getItem('user_details'));
 
 function CourseDetailsPage() {
 	const [courseId, setCourseId] = useState('');
@@ -82,7 +84,8 @@ function CourseDetailsPage() {
 	}, [courseId, courseDetail, currentBalance, handleMsgShown]);
 
 	const handleShareBtnClick = useCallback(() => {
-		navigator.clipboard.writeText(window.location?.href);
+		navigator.clipboard.writeText(`${window.location.origin}/login?referral=${user_details?.userId}`);
+
 		handleMsgShown('Shearing Link Copied', 'success');
 		setShareBtnTooltip('Link Copied');
 		setTimeout(() => {
