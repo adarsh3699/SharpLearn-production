@@ -63,17 +63,19 @@ function HomePage() {
 				<div className="titleBorder"></div>
 			</div>
 
-			<div className="allShares">
-				{allshares.map((item, index) => {
-					return (
-						<div className="shareBox" key={index}>
-							<div className="shareDetailSection">
-								<div className="shareTitle">Name: {item?.userName}</div>
+			{allshares && (
+				<div className="allShares">
+					{allshares?.map((item, index) => {
+						return (
+							<div className="shareBox" key={index}>
+								<div className="shareDetailSection">
+									<div className="shareTitle">Name: {item?.userName}</div>
+								</div>
 							</div>
-						</div>
-					);
-				})}
-			</div>
+						);
+					})}
+				</div>
+			)}
 
 			{/* {msg && <ShowMsg isError={msg?.text ? true : false} msgText={msg?.text} type={msg?.type} />} */}
 		</div>
