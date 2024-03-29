@@ -150,7 +150,7 @@ function handleUserState(currentPage, setIsLoading) {
 			// .then((document.location.href = '/'));
 		}
 		if (currentPage === 'loginPage' && user_details && user) {
-			document.location.href = '/';
+			// document.location.href = '/';
 		} else if (currentPage !== 'loginPage' && user === null) {
 			// document.location.href = '/login';
 			setIsLoading(false);
