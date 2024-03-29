@@ -27,7 +27,7 @@ function HomePage() {
 	// }, []);
 
 	useEffect(() => {
-		const userId = JSON.parse(localStorage.getItem('user_details')).userId;
+		const userId = JSON.parse(localStorage.getItem('user_details'))?.userId;
 		if (userId)
 			apiCall('get_all/?id=' + userId).then((response) => {
 				console.log(response);
