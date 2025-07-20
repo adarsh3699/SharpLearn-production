@@ -1,6 +1,5 @@
 const currentLocalBalance = localStorage.getItem('current_balance');
-const apiBaseUrl = process.env.REACT_APP_MONGO_DATABASE_URL || 'http://localhost:4000/';
-// const apiBaseUrl = 'http://localhost:4000/';
+const apiBaseUrl = 'http://localhost:4000/';
 
 if (!currentLocalBalance && currentLocalBalance !== 0) localStorage.setItem('current_balance', 10000);
 
@@ -9,22 +8,26 @@ function handleCurentBalance(cost, currentBalance, setCurrentBalance) {
 	localStorage.setItem('current_balance', localStorage.getItem('current_balance') - cost);
 }
 
-async function apiCall(endpoint, method, body) {
+async function apiCall(endpoint, method, body, headers = {}) {
 	const apiUrl = apiBaseUrl + endpoint;
 	try {
 		let apiCallResp;
 
 		if (method === 'GET' || method === undefined) {
 			apiCallResp = await fetch(apiUrl, {
-				'Content-Type': 'application/json',
+				headers: {
+					'Content-Type': 'application/json',
+					...headers,
+				},
 			});
 		} else {
 			apiCallResp = await fetch(apiUrl, {
 				method: method,
 				headers: {
 					'Content-Type': 'application/json',
+					...headers,
 				},
-				body: JSON.stringify(body),
+				body: body ? JSON.stringify(body) : undefined,
 			});
 		}
 

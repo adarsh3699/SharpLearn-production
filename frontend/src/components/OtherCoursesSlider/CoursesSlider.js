@@ -8,7 +8,6 @@ import './coursesSlider.css';
 
 function CoursesSlider({ allCourses }) {
 	const handleCourseClick = useCallback((courseId) => {
-		console.log(courseId);
 		window.open(`/course/${courseId}`, '_blank');
 		// window.location = `/course/${courseId}`;
 	}, []);

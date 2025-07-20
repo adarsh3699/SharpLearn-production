@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 
 import { currentLocalBalance, handleCurentBalance } from '../utils';
 
-import { getCourseDetails, getOtherCourses } from '../firebase/courseDetailsPage.js';
+import { getCourseDetails, getOtherCourses } from '../services/courses.js';
+import { addToCart } from '../services/cart.js';
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg.js';
 import CoursesSlider from '../components/OtherCoursesSlider/CoursesSlider.js';
@@ -40,8 +41,6 @@ function CourseDetailsPage() {
 			setTimeout(() => {
 				setMsg({ text: '', type: '' });
 			}, 2500);
-		} else {
-			console.log('Please Provide Text Msg');
 		}
 	}, []);
 
@@ -54,14 +53,15 @@ function CourseDetailsPage() {
 	}, [handleMsgShown]);
 
 	const handleAddToCartBtnClick = useCallback(() => {
-		const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
-		if (!userCart.includes(courseId)) {
-			userCart.push(courseId);
-			localStorage.setItem('user_cart', JSON.stringify(userCart));
-			handleMsgShown('Course Added to Cart', 'success');
-		} else {
-			handleMsgShown('Course Already in Cart', 'warning');
-		}
+		if (!courseId) return;
+
+		addToCart(courseId, handleMsgShown)
+			.then((response) => {
+				// Success is already handled in the addToCart function
+			})
+			.catch((error) => {
+				console.error('Error adding to cart:', error);
+			});
 	}, [courseId, handleMsgShown]);
 
 	const handleEnrollBtnClick = useCallback(() => {

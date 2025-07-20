@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
-import { handleForgetPassword } from '../firebase/auth';
+import { handleForgetPassword } from '../services/auth';
 import Loader from '../components/Loader/Loader';
 import { Toolbar } from '@mui/material';
 

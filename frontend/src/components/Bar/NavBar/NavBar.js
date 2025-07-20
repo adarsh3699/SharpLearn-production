@@ -1,8 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { currentLocalBalance } from '../../../utils';
-// import { handleUserState } from '../../../firebase/auth';
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -33,12 +32,32 @@ const user_details = JSON.parse(localStorage.getItem('user_details'));
 function NavBar(props) {
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const [searchQuery, setSearchQuery] = useState('');
+	const navigate = useNavigate();
 	const currentBalance = currentLocalBalance || 10000;
 
 	const container = window !== undefined ? () => window().document.body : undefined;
 
 	const handleDrawerToggle = useCallback(() => {
 		setMobileOpen((prevState) => !prevState);
+	}, []);
+
+	const handleSearchSubmit = useCallback(
+		(e) => {
+			e.preventDefault();
+			if (searchQuery.trim()) {
+				// Navigate to courses page with search query
+				navigate(`/All_Courses?search=${encodeURIComponent(searchQuery.trim())}`);
+			} else {
+				// If empty search, just go to courses page
+				navigate('/All_Courses');
+			}
+		},
+		[searchQuery, navigate]
+	);
+
+	const handleSearchChange = useCallback((e) => {
+		setSearchQuery(e.target.value);
 	}, []);
 
 	const [settingsDrawerMenu, setSettingsDrawerMenu] = useState(
@@ -153,7 +172,6 @@ function NavBar(props) {
 
 	return (
 		<Box sx={{ display: 'flex' }}>
-			{/* <CssBaseline /> */}
 			<AppBar component="nav">
 				<Toolbar className="navBar">
 					<IconButton
@@ -177,8 +195,13 @@ function NavBar(props) {
 							</NavLink>
 						))}
 					</Box>
-					<form className="searchBar">
-						<input type="text" placeholder="Search for courses" />
+					<form className="searchBar" onSubmit={handleSearchSubmit}>
+						<input
+							type="text"
+							placeholder="Search for courses"
+							value={searchQuery}
+							onChange={handleSearchChange}
+						/>
 						<button type="submit">Search</button>
 					</form>
 					<NavLink to="/cart" className="phoneCartBtn">

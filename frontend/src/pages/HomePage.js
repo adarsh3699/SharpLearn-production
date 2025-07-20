@@ -30,12 +30,10 @@ function HomePage() {
 		const userId = JSON.parse(localStorage.getItem('user_details'))?.userId;
 		if (userId)
 			apiCall('get_all/?id=' + userId).then((response) => {
-				console.log(response);
 				setAllshares(response.data?.referralDetails);
 				setShareCount(response.data?.referralCount);
 			});
 	}, []);
-	console.log(allshares);
 	return (
 		<div className="homePage">
 			<Toolbar />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { handleUserState, handleLoginForm, handleSignUpForm } from '../firebase/auth';
+import { handleUserState, handleLoginForm, handleSignUpForm } from '../services/auth';
 import Loader from '../components/Loader/Loader';
 
 import { Toolbar } from '@mui/material';

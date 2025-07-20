@@ -122,3 +122,70 @@
 		font-size: 20px;
 	}
 }
+
+/* Search Results Styles */
+.searchResultsHeader {
+	margin: 20px 0;
+	padding: 20px;
+	background-color: #2a2b2d;
+	border-radius: 8px;
+	border-left: 4px solid #4caf50;
+}
+
+.searchResultsContent {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 15px;
+}
+
+.searchResultsText {
+	text-align: left;
+	flex: 1;
+}
+
+.searchResultsHeader h2 {
+	color: #4caf50;
+	margin-bottom: 10px;
+	font-size: 24px;
+	margin: 0 0 5px 0;
+}
+
+.searchResultsHeader p {
+	color: #b0b0b0;
+	font-size: 16px;
+	margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+	.searchResultsContent {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.searchResultsText {
+		text-align: center;
+	}
+}
+
+.noSearchResults {
+	text-align: center;
+	margin: 40px 0;
+	padding: 40px 20px;
+	background-color: #2a2b2d;
+	border-radius: 8px;
+	border-left: 4px solid #ff9800;
+}
+
+.noSearchResults h3 {
+	color: #ff9800;
+	margin-bottom: 10px;
+	font-size: 22px;
+}
+
+.noSearchResults p {
+	color: #b0b0b0;
+	font-size: 16px;
+	margin: 0;
+}

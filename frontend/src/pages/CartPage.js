@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback, useState } from 'react';
 
-import { getAllCartItems } from '../firebase/cartPage';
+import { getAllCartItems, removeFromCart, purchaseCartItems } from '../services/cart';
+import { handleCurentBalance } from '../utils';
 
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg';
@@ -14,11 +15,13 @@ import cartIsEmpty from '../images/cart-is-empty.png';
 
 import '../styles/cartPage.css';
 
-function HomePage() {
+function CartPage() {
 	const [msg, setMsg] = useState({ text: '', type: '' });
 	const [isGetCourseApiLoading, setIsGetCourseApiLoading] = useState(true);
 	const [allCartCourses, setAllCartCourses] = useState([]);
 	const [totalCoursePrices, setTotalCoursePrices] = useState({ courseORGPrice: 0, courseDiscountedPrice: 0 });
+	const [isPurchaseLoading, setIsPurchaseLoading] = useState(false);
+	const [currentBalance, setCurrentBalance] = useState(parseInt(localStorage.getItem('current_balance')) || 10000);
 
 	const handleMsgShown = useCallback((msgText, type) => {
 		if (msgText) {
@@ -26,15 +29,15 @@ function HomePage() {
 			setTimeout(() => {
 				setMsg({ text: '', type: '' });
 			}, 2500);
-		} else {
-			console.log('Please Provide Text Msg');
 		}
 	}, []);
 
+	// Load cart items
 	useEffect(() => {
 		getAllCartItems(setAllCartCourses, setIsGetCourseApiLoading, handleMsgShown);
 	}, [handleMsgShown]);
 
+	// Calculate total prices
 	useEffect(() => {
 		let cartPriceSum = { courseORGPrice: 0, courseDiscountedPrice: 0 };
 		for (var i = 0; i < allCartCourses.length; i++) {
@@ -45,44 +48,50 @@ function HomePage() {
 		setTotalCoursePrices(cartPriceSum);
 	}, [allCartCourses]);
 
-	const handleRemoveBtnClick = useCallback((courseId) => {
-		const userCart = JSON.parse(localStorage.getItem('user_cart')) || [];
-		var filteredArray = userCart.filter(function (e) {
-			return e !== courseId;
-		});
-		localStorage.setItem('user_cart', JSON.stringify(filteredArray));
-		window.location.reload();
-	}, []);
+	const handleRemoveBtnClick = useCallback(
+		(courseId) => {
+			removeFromCart(courseId, handleMsgShown)
+				.then(() => {
+					// Reload cart items after successful removal
+					getAllCartItems(setAllCartCourses, setIsGetCourseApiLoading, handleMsgShown);
+				})
+				.catch((error) => {
+					console.error('Error removing item from cart:', error);
+				});
+		},
+		[handleMsgShown]
+	);
 
 	const handleOrderPlaceBtnClick = useCallback(() => {
-		const enrolledCourses = JSON.parse(localStorage.getItem('enrolled_courses')) || [];
-		const user_details = JSON.parse(localStorage.getItem('user_details'));
-
-		if (!user_details) return handleMsgShown('Please Login to Place Order', 'error');
-		const coursesMap = new Map();
-
-		if (allCartCourses.length !== 0) {
-			// Function to add courses to the map, overwriting duplicates
-			const addCourseToMap = (course) => {
-				coursesMap.set(course.courseId, course);
-			};
-
-			// Add courses from allCartCourses to the map
-			allCartCourses.forEach(addCourseToMap);
-
-			// Add enrolled courses to the map
-			enrolledCourses.forEach(addCourseToMap);
-
-			// Convert the Map values back to an array
-			const mergedCourses = Array.from(coursesMap.values());
-			localStorage.setItem('enrolled_courses', JSON.stringify(mergedCourses));
-
-			localStorage.removeItem('user_cart');
-			window.location.reload();
-		} else {
-			handleMsgShown('Please Add Courses to Cart', 'error');
+		if (allCartCourses.length === 0) {
+			handleMsgShown('Your cart is empty', 'warning');
+			return;
 		}
-	}, [allCartCourses, handleMsgShown]);
+
+		if (currentBalance < totalCoursePrices.courseDiscountedPrice) {
+			handleMsgShown('Insufficient balance to complete purchase', 'error');
+			return;
+		}
+
+		setIsPurchaseLoading(true);
+
+		purchaseCartItems(handleMsgShown, (response) => {
+			// Update local balance
+			setCurrentBalance(response.newBalance);
+			// Reload cart (should be empty now)
+			getAllCartItems(setAllCartCourses, setIsGetCourseApiLoading, handleMsgShown);
+			// Redirect to home page after successful purchase
+			setTimeout(() => {
+				window.location.href = '/';
+			}, 2000);
+		}).finally(() => {
+			setIsPurchaseLoading(false);
+		});
+	}, [allCartCourses, totalCoursePrices, currentBalance, handleMsgShown]);
+
+	const handleCourseClick = useCallback((courseId) => {
+		window.location = `/course/${courseId}`;
+	}, []);
 
 	return (
 		<div className="cartPage">
@@ -150,8 +159,9 @@ function HomePage() {
 						sx={{ my: 3, px: 3, py: 1.5 }}
 						fullWidth
 						onClick={handleOrderPlaceBtnClick}
+						disabled={isPurchaseLoading}
 					>
-						Place Order
+						{isPurchaseLoading ? 'Processing...' : 'Place Order'}
 					</Button>
 				</div>
 			</div>
@@ -160,4 +170,4 @@ function HomePage() {
 	);
 }
 
-export default HomePage;
+export default CartPage;

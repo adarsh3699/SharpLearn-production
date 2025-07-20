@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { handleSignOut } from '../../../firebase/auth';
+import { handleSignOut } from '../../../services/auth';
 
 import logoImg from '../../../images/logoSizeM.png';
 // import googleImg from './img/google.png';
