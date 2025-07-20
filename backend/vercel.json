@@ -1,6 +1,5 @@
 {
 	"version": 2,
-	"name": "sharplearn-backend",
 	"builds": [
 		{
 			"src": "./index.js",
@@ -12,14 +11,5 @@
 			"src": "/(.*)",
 			"dest": "/"
 		}
-	],
-	"env": {
-		"NODE_ENV": "production"
-	},
-	"functions": {
-		"./index.js": {
-			"maxDuration": 10
-		}
-	},
-	"regions": ["iad1"]
+	]
 }
