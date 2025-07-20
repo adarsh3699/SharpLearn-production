@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback, useState } from 'react';
 
 import { getAllCartItems, removeFromCart, purchaseCartItems } from '../services/cart';
-import { handleCurentBalance } from '../utils';
 
 import Loader from '../components/Loader/Loader.js';
 import ShowMsg from '../components/ShowMsg/ShowMsg';
@@ -88,10 +87,6 @@ function CartPage() {
 			setIsPurchaseLoading(false);
 		});
 	}, [allCartCourses, totalCoursePrices, currentBalance, handleMsgShown]);
-
-	const handleCourseClick = useCallback((courseId) => {
-		window.location = `/course/${courseId}`;
-	}, []);
 
 	return (
 		<div className="cartPage">
