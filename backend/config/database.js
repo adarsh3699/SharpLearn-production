@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 // Hardcoded configuration (no env variables)
-const MONGO_URI = 'mongodb+srv://adarsh3699:adarsh&3699@other-cluster.2ssscyq.mongodb.net/sharplearn';
+// Note: Special characters in password are URL-encoded (&3699 -> %263699)
+const MONGO_URI = 'mongodb+srv://adarsh3699:adarsh%263699@other-cluster.2ssscyq.mongodb.net/sharplearn';
 
 const connectDB = async () => {
 	try {

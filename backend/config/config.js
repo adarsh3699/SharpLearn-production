@@ -6,7 +6,7 @@ const CORS_ORIGINS = [
 	'http://localhost:3000',
 	'http://localhost:3001',
 	'https://sharplearn.bhemu.me',
-	'https://www.sharplearn.tech',
+	'https://sharplearn.vercel.app',
 ];
 
 module.exports = {
